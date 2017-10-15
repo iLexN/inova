@@ -102,4 +102,9 @@ class CustomerExtraInfoServices
 
         return $this->create($data);
     }
+    
+    public function clearCache()
+    {
+        $this->cache->delete('customer.extra.list');
+    }
 }
