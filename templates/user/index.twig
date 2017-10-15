@@ -1,0 +1,28 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+<h2>User List</h2>
+<div id="list">
+    search
+    <input type="text" v-model="search_text">
+
+    <table border="1">
+        <tr v-for="(u, index) in list_sort">
+            <td v-text="u.name"></td>
+            <td v-text="u.email"></td>
+            <td v-text="u.department"></td>
+            <td v-text="u.title"></td>
+            <td><a :href="'/user/'+u.id">Edit</a></td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
+
+
+{% block js_footer %}
+    <script>
+      var user_list = {{ user_list | raw }};
+    </script>
+    <script src="/assets/js/user/index.js"></script>
+{% endblock %}

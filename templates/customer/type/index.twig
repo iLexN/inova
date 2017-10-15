@@ -1,0 +1,57 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+<h2>Type List</h2>
+<div id="type_list">
+    <div>
+        <p>
+            name :
+            <input type="text" v-model="type.name">
+            <input type="button" value="add" v-on:click="add">
+        </p>
+    </div>
+    <div>
+        Customer Type:
+        <ul>
+            <li v-for="(t, index) in type_list">
+                <input type="text" v-model="t.name">
+                <input type="button" value="update" v-on:click="update(t)">
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="regions_list">
+    <h2>Region</h2>
+    <ul>
+        <li>
+            <input type="text" v-model="region.name">
+            <input type="button" value="add Region" v-on:click="addRegion">
+        </li>
+        <li v-for="(r,r_index) in regions_list">
+            <input type="text" v-model="r.name">
+            <input type="button" value="update" v-on:click="updateRegion(r)">
+            <ul>
+                <li>
+                    <input type="text" v-model="r.new_country">
+                    <input type="button" value="add Country" v-on:click="addCountry(r,r_index)">
+                </li>
+                <li v-for="c in r.countries">
+                    <input text="text" v-model="c.name">
+                    <input type="button" value="update" v-on:click="updateCountry(c)">
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+{% endblock %}
+
+
+{% block js_footer %}
+    <script>
+      var type_list = {{ type_list | raw }};
+      var regions_list = {{ regions_list | raw }}
+    </script>
+    <script src="/assets/js/customer/type/index.js"></script>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+<h2>Customer List</h2>
+<div id="list">
+    search
+    <input type="text" v-model="search_text">
+
+    <table border="1">
+        <tr v-for="(c, index) in customer_list_sort">
+            <td v-text="c.name"></td>
+            <td v-text="c.code"></td>
+            <td v-text="c.region.name"></td>
+            <td v-text="c.country.name"></td>
+            <td>
+                <span v-for="t in c.type" v-text="t.name + ','"></span>
+            </td>
+            <td>
+                <table border="1">
+                    <tr v-for="s in c.staff">
+                        <td v-text="s.name"></td>
+                        <td v-text="s.title"></td>
+                        <td v-text="s.department"></td>
+                    </tr>
+                </table>
+            </td>
+
+            <td><a :href="'/customer/'+c.id">Edit</a></td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
+
+
+{% block js_footer %}
+    <script>
+      var customer_list = {{ customer_list | raw }};
+    </script>
+    <script src="/assets/js/customer/index.js"></script>
+{% endblock %}

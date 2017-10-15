@@ -1,0 +1,47 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+<H2>new user</H2>
+<div id="user">
+    <div>
+        {% if mode == 'new' %}
+            <input type="button" value="Save" v-on:click="create_user">
+        {% else %}
+            <input type="button" value="Update" v-on:click="update_user">
+        {% endif %}
+    </div>
+    <div>
+        <p>Name</p>
+        <input type="text" v-model="user.name">
+    </div>
+    <div>
+        <p>email</p>
+        <input type="text" v-model="user.email">
+    </div>
+    <div>
+        <p>department</p>
+        <input type="text" v-model="user.department">
+    </div>
+    <div>
+        <p>title</p>
+        <input type="text" v-model="user.title">
+    </div>
+    <div>
+        <p>belong to '<b v-text="header_name"></b>'</p>
+        <input list="users" v-model="user.head_id">
+        <datalist id="users" ref="usersList">
+            {% for user in userList %}
+                <option value="{{ user.id }}">{{ user.name }}</option>
+            {% endfor %}
+        </datalist>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js_footer %}
+    <script>
+        var user_info = {{ user_info | raw }};
+    </script>
+    <script src="/assets/js/user/create.js"></script>
+{% endblock %}

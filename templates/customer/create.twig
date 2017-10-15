@@ -1,0 +1,105 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+<div id="customer">
+    <h2>Create Customer</h2>
+    <div>
+        {% if mode == 'new' %}
+            <input type="button" value="Save" v-on:click="create_customer">
+        {% else %}
+            <input type="button" value="Update" v-on:click="update_customer">
+        {% endif %}
+    </div>
+    <div>
+        <label>
+            <p>Code:</p>
+            <input type="text" v-model="customer.code">
+        </label>
+    </div>
+    <div>
+        <label>
+            <p>Name:</p>
+            <input type="text" v-model="customer.name">
+        </label>
+    </div>
+    <div>
+        <label>
+            <p>Comment:</p>
+            <textarea v-model="customer.comment"></textarea>
+        </label>
+    </div>
+    <div>
+        <label>
+            <p>Region:</p>
+            <select v-model="customer.region_id">
+                <option v-for="r in regionsList" :key="r.id" :value="r.id" v-text="r.name"></option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label>
+            <p>Country:</p>
+            <select v-model="customer.country_id">
+                <option v-for="c in countryList" :key="c.id" :value="c.id" v-text="c.name"></option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <p>Customer Type</p>
+        {% for each_type in customer_type_list %}
+            <label>
+                <input type="checkbox" v-model="type" value="{{ each_type.id }}"> {{ each_type.name }}
+            </label>
+        {% endfor %}
+    </div>
+    <div>
+        <p>Extra:</p>
+        <div>
+            name:
+            <input type="text" v-model="extra_info.customer_name">
+            contact person:
+            <input type="text" v-model="extra_info.contact_person">
+            phone :
+            <input type="text" v-model="extra_info.phone">
+            <input type="button" v-on:click="add_extra" value="add">
+        </div>
+        <table border="1">
+            <tr v-for="(ex, index) in extra">
+                <td v-text="ex.customer_name"></td>
+                <td v-text="ex.contact_person"></td>
+                <td v-text="ex.phone"></td>
+                <td><input type="button" value="delete" v-on:click="delete_extra(index,ex.id)"></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <p>belong to '<b v-text="show_head_name"></b>'</p>
+        <input list="staff" v-model="staff_id"> <input type="button" v-on:click="add_staff" value="add">
+        <datalist id="staff">
+            <option v-for="s in staff_list_choose" :key="s.id" :value="s.id" v-text="s.name"></option>
+        </datalist>
+        <table border="1">
+            <tr v-for="(s, index) in staff">
+                <td v-text="s"></td>
+                <td v-text="get_staff_info(s,'name')"></td>
+                <td v-text="get_staff_info(s,'email')"></td>
+                <td v-text="get_staff_info(s,'title')"></td>
+                <td><input type="button" value="delete" v-on:click="delete_staff(index,s.id)"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js_footer %}
+<script>
+    var region = {{ regions | raw }};
+    var customer_info = {{ customer_info | raw}};
+    var customer_type = {{ customer_type | raw }};
+    var customer_extra = {{ customer_extra | raw }};
+    var customer_staff = {{ customer_staff | raw }};
+    var staff_list = {{ staff_list | raw }};
+</script>
+<script src="/assets/js/customer/create.js"></script>
+{% endblock %}
