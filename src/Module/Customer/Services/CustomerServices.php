@@ -4,10 +4,16 @@ namespace App\Module\Customer\Services;
 
 use App\Module\Customer\Entity\Customers;
 use App\Module\Customer\Repository\CustomerRepository;
+use Illuminate\Database\Eloquent\Collection;
 use League\Event\Emitter;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Simple\FilesystemCache;
 
+/**
+ * Class CustomerServices
+ *
+ * @package App\Module\Customer\Services
+ */
 class CustomerServices
 {
     /** @var CustomerRepository  */
@@ -22,6 +28,12 @@ class CustomerServices
     /** @var  FilesystemCache */
     private $cache;
 
+    /**
+     * CustomerServices constructor.
+     *
+     * @param ContainerInterface $container
+     * @param CustomerRepository $repository
+     */
     public function __construct(ContainerInterface $container, CustomerRepository $repository)
     {
         $this->repository = $repository;
@@ -30,27 +42,47 @@ class CustomerServices
         $this->cache = $container['cache'];
     }
 
+    /**
+     * create customer
+     *
+     * @param array $data
+     *
+     * @return Customers
+     */
     private function create(array $data)
     {
         $customer = $this->repository->create($data);
         return $customer;
     }
 
+    /**
+     * Update customer
+     *
+     * @param Customers $customer
+     * @param array $data
+     */
     private function update(Customers $customer, array $data)
     {
         $customer->update($data);
     }
 
     /**
+     * Find One
+     *
      * @param int $id
      *
-     * @return Customers|null|static|static[]
+     * @return Customers|null
      */
     public function findOne(int $id)
     {
         return $this->repository->findOne($id);
     }
 
+    /**
+     * FindAll
+     *
+     * @return Customers[]|Collection|null
+     */
     public function findAll()
     {
         $cacheKey = 'customers.list';
@@ -62,12 +94,27 @@ class CustomerServices
         return $result;
     }
 
+    /**
+     * Find one by field
+     *
+     * @param string $field
+     * @param string $value
+     *
+     * @return Customers|null
+     */
     public function findOneByField(string $field, string $value)
     {
         return $this->repository->findOneByField($field, $value);
     }
 
-    public function createCustomer(array $data)
+    /**
+     * Create Customer with related field
+     *
+     * @param array $data
+     *
+     * @return Customers
+     */
+    public function createCustomer(array $data) : Customers
     {
         $customer = $this->create($data['customer']);
         $this->updateCustomerRelatedInfo($customer, $data);
@@ -76,6 +123,12 @@ class CustomerServices
         return $customer;
     }
 
+    /**
+     * Update Customer with related field
+     *
+     * @param Customers $customer
+     * @param array $data
+     */
     public function updateCustomer(Customers $customer, array $data)
     {
         $this->update($customer, $data['customer']);
@@ -84,6 +137,12 @@ class CustomerServices
         $this->clearCache();
     }
 
+    /**
+     * Update Customer related field
+     *
+     * @param Customers $customer
+     * @param array $data
+     */
     private function updateCustomerRelatedInfo(Customers $customer, array $data)
     {
         $this->saveCustomerExtra($customer, $data);
@@ -91,6 +150,12 @@ class CustomerServices
         $this->syncStaff($customer, $data);
     }
 
+    /**
+     * Save Customer Extra Info
+     *
+     * @param Customers $customer
+     * @param array $data
+     */
     private function saveCustomerExtra(Customers $customer, array $data)
     {
         $extra = $data['extra'] ?? false;
@@ -100,6 +165,12 @@ class CustomerServices
         }
     }
 
+    /**
+     * Sync Customer Type
+     *
+     * @param Customers $customer
+     * @param array $data
+     */
     private function addType(Customers $customer, array $data)
     {
         $type = $data['type'] ?? false;
@@ -108,6 +179,12 @@ class CustomerServices
         }
     }
 
+    /**
+     * Sync Staff
+     *
+     * @param Customers $customer
+     * @param array $data
+     */
     private function syncStaff(Customers $customer, array $data)
     {
         $sync = $data['staff'] ?? false;
@@ -116,7 +193,14 @@ class CustomerServices
         }
     }
 
-    public function isCodeExist(string $code)
+    /**
+     * Check code is already Exist
+     *
+     * @param string $code
+     *
+     * @return bool
+     */
+    public function isCodeExist(string $code) : bool
     {
         if ($code === '') {
             return false;
@@ -129,6 +213,9 @@ class CustomerServices
         return false;
     }
 
+    /**
+     * Clear Cache
+     */
     public function clearCache()
     {
         $this->cache->delete('customers.list');

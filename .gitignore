@@ -1,6 +1,5 @@
 /vendor/
 /logs/*
 /cache/*
-/.idea/
 .env
 /.php_cs.cache
