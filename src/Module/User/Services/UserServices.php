@@ -16,12 +16,6 @@ use Symfony\Component\Cache\Simple\FilesystemCache;
  */
 class UserServices
 {
-
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
     /**
      * @var UserRepository
      */
@@ -41,7 +35,6 @@ class UserServices
      */
     public function __construct(ContainerInterface $container, UserRepository $repository)
     {
-        $this->container = $container;
         $this->cache = $container['cache'];
         $this->emit = $container['eventEmitter'];
         $this->repository = $repository;

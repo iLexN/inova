@@ -17,12 +17,6 @@ use Symfony\Component\Cache\Simple\FilesystemCache;
  */
 class RegionCountryServices
 {
-
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
     /**
      * @var RegionCountryRepository
      */
@@ -42,7 +36,6 @@ class RegionCountryServices
      */
     public function __construct(ContainerInterface $container, RegionCountryRepository $repository)
     {
-        $this->container = $container;
         $this->cache = $container['cache'];
         $this->emit = $container['eventEmitter'];
         $this->repository = $repository;

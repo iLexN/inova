@@ -15,12 +15,6 @@ use Psr\Container\ContainerInterface;
  */
 class LoginServices
 {
-
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
     /**
      * @var LoginRepository
      */
@@ -40,7 +34,7 @@ class LoginServices
      */
     public function __construct(ContainerInterface $container, LoginRepository $repository)
     {
-        $this->container = $container;
+        //$this->container = $container;
         $this->repository = $repository;
         $this->emit = $container['eventEmitter'];
         $this->userServices = $container['userServices'];

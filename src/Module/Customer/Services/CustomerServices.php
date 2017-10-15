@@ -10,8 +10,6 @@ use Symfony\Component\Cache\Simple\FilesystemCache;
 
 class CustomerServices
 {
-    private $container;
-
     /** @var CustomerRepository  */
     private $repository;
 
@@ -26,7 +24,6 @@ class CustomerServices
 
     public function __construct(ContainerInterface $container, CustomerRepository $repository)
     {
-        $this->container = $container;
         $this->repository = $repository;
         $this->extraInfoServices = $container['customerExtraServices'];
         $this->emit = $container['eventEmitter'];

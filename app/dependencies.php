@@ -43,7 +43,7 @@ $container['twig'] = function (ContainerInterface $container) {
 
 $container['cache'] = function (ContainerInterface $container){
     $settings = $container->get('cacheConfig');
-    return $cache = new FilesystemCache($settings['name'], $settings['ttl'],$settings['dir']);
+    return new FilesystemCache($settings['name'], $settings['ttl'],$settings['dir']);
 };
 
 

@@ -5,6 +5,7 @@ namespace App\Module\Customer\Services;
 use App\Module\Customer\Entity\CustomerExtraInfo;
 use App\Module\Customer\Repository\CustomerExtraInfoRepository;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * Class CustomerExtraInfoServices
@@ -13,16 +14,13 @@ use Psr\Container\ContainerInterface;
  */
 class CustomerExtraInfoServices
 {
-
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
     /**
      * @var CustomerExtraInfoRepository
      */
     private $repository;
+
+    /** @var  FilesystemCache */
+    private $cache;
 
     /**
      * CustomerExtraInfoServices constructor.
@@ -32,8 +30,8 @@ class CustomerExtraInfoServices
      */
     public function __construct(ContainerInterface $container, CustomerExtraInfoRepository $repository)
     {
-        $this->container = $container;
         $this->repository = $repository;
+        $this->cache = $container['cache'];
     }
 
     /**
