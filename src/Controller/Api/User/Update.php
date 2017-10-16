@@ -34,7 +34,7 @@ class Update extends AbstractController
         if ($user->email !== $input['email'] && $userServices->isEmailExist($input['email'])) {
             return new JsonResponse(['error' => 'email already exist']);
         }
-        if (!\is_numeric($input['head_id']) || $userServices->isUserExist($input['head_id'])) {
+        if (!empty($input['head_id']) && (!\is_numeric($input['head_id']) || $userServices->isUserExist($input['head_id']))) {
             return new JsonResponse(['error'=>'belong to not exist']);
         }
 

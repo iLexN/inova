@@ -34,9 +34,9 @@ $container['logger'] = function (ContainerInterface $container) {
 $container['twig'] = function (ContainerInterface $container) {
     $settings = $container->get('twigConfig');
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
-    if (!$container['settings']['displayErrorDetails']) {
-        $view->addExtension(new Twig_Extension_Debug());
-    }
+
+    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
+    $view->addExtension(new \Slim\Views\TwigExtension($container['router'], $basePath));
 
     return $view;
 };
