@@ -4,6 +4,21 @@
 
 </head>
 <body>
+
+<header>
+    <div>
+        <b>Customer</b>
+        <a href="{{ path_for('customer.index') }}">List</a> |
+        <a href="{{ path_for('customer.new') }}">New</a> |
+        <a href="{{ path_for('customer.component') }}">Component</a>
+    </div>
+    <div>
+        <b>User</b>
+        <a href="{{ path_for('user.index') }}">List</a>
+        <a href="{{ path_for('user.new') }}">New</a>
+    </div>
+</header>
+
 {% block content %}{% endblock %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
