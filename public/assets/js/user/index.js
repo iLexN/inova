@@ -1,3 +1,6 @@
+/** global: Vue */
+/** global: user_list */
+
 var app = new Vue({
   el: '#list',
   data: {
@@ -16,7 +19,6 @@ var app = new Vue({
         if ( search == ''){
           return true;
         }
-        console.log(c.name);
         return c.name.indexOf(search) !== -1 || c.email.indexOf(search) !== -1;
       });
     }

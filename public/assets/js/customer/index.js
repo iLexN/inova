@@ -1,3 +1,7 @@
+/** global: Vue */
+/** global: customer_list */
+
+
 var app = new Vue({
   el: '#list',
   data: {

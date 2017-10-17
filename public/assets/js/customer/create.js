@@ -1,3 +1,14 @@
+/** global: Vue */
+/** global: _ */
+/** global: axios */
+/** global: customer_info */
+/** global: customer_extra */
+/** global: customer_type */
+/** global: customer_staff */
+/** global: region */
+/** global: staff_list */
+
+
 var app = new Vue({
   el: '#customer',
   data: {
@@ -75,6 +86,7 @@ var app = new Vue({
       }
       this.extra.push(Object.assign({}, this.extra_info));
       this.reest_type();
+      return true;
     },
     reest_type : function(){
       this.extra_info.customer_name = '';
@@ -144,7 +156,7 @@ var app = new Vue({
         console.log(error);
       });
     },
-    delete_staff : function (index, id){
+    delete_staff : function (index){
         this.staff.splice(index, 1);
     }
   }
