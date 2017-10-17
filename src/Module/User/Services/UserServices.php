@@ -2,12 +2,12 @@
 
 namespace App\Module\User\Services;
 
+use App\Module\Cache\CacheHandlerInterface;
 use App\Module\User\Entity\User;
 use App\Module\User\Repository\UserRepository;
 use Illuminate\Database\Eloquent\Collection;
 use League\Event\Emitter;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * Class UserServices
@@ -24,7 +24,7 @@ class UserServices
     /** @var  Emitter */
     private $emit;
 
-    /** @var  FilesystemCache */
+    /** @var  CacheHandlerInterface */
     private $cache;
 
     /**
@@ -83,15 +83,9 @@ class UserServices
     /**
      * @return User[]|Collection
      */
-    public function getAll() : Collection
+    public function findAll() : Collection
     {
-        $cacheKey = 'user.list';
-        if ($this->cache->has($cacheKey)) {
-            return $this->cache->get($cacheKey);
-        }
-        $result = $this->repository->getAll();
-        $this->cache->set($cacheKey, $result);
-        return $result;
+        return $this->cache->handler('user.list', [$this->repository,'findAll']);
     }
 
 
@@ -107,6 +101,8 @@ class UserServices
     }
 
     /**
+     * check user email is exist.
+     *
      * @param $email string
      *
      * @return bool
@@ -120,6 +116,13 @@ class UserServices
         return false;
     }
 
+    /**
+     * check user exist by id
+     *
+     * @param int $id
+     *
+     * @return bool
+     */
     public function isUserExist(int $id):bool
     {
         $user = $this->findOne($id);

@@ -2,10 +2,10 @@
 
 namespace App\Module\Customer\Services;
 
+use App\Module\Cache\CacheHandlerInterface;
 use App\Module\Customer\Entity\CustomerExtraInfo;
 use App\Module\Customer\Repository\CustomerExtraInfoRepository;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * Class CustomerExtraInfoServices
@@ -19,7 +19,7 @@ class CustomerExtraInfoServices
      */
     private $repository;
 
-    /** @var  FilesystemCache */
+    /** @var  CacheHandlerInterface */
     private $cache;
 
     /**
