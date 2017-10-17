@@ -41,7 +41,7 @@ class Show extends AbstractController
 
         /** @var UserServices $userServices */
         $userServices = $this->container['userServices'];
-        $staff_list = $userServices->getAll();
+        $staff_list = $userServices->findAll();
 
         $out = $this->twig->fetch('customer/create.twig', [
             'mode' => 'edit',
