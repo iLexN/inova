@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property Regions $countries
+ * @property Regions|null $countries
  */
 class Regions extends Model
 {

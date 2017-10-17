@@ -32,6 +32,9 @@ var app = new Vue({
       console.log('create');
       var data = this.user;
       axios.post('/api/user/'+this.user.id, data).then(function (response) {
+        if ( response.data.error !== undefined ){
+          alert(response.data.error);
+        }
         console.log(response);
       }).catch(function (error) {
         console.log(error);
