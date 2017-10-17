@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property string $code
+ * @property int $region_id
+ * @property int $country_id
  * @property CustomerType $type
  * @property Regions $region
  * @property Countries $country
@@ -20,6 +22,10 @@ class Customers extends Model
     public $timestamps = false;
     protected $guarded = [];
 
+    protected $casts =[
+        'region_id' => 'integer',
+        'country_id' => 'integer',
+    ];
 
     public function type()
     {

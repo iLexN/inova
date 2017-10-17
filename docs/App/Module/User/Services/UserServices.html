@@ -139,7 +139,7 @@
                     <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>[]|<abbr title="Illuminate\Database\Eloquent\Collection">Collection</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAll">getAll</a>()
+                    <a href="#method_findAll">findAll</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -163,19 +163,17 @@
                 <div class="col-md-8 type">
                     <a href="#method_isEmailExist">isEmailExist</a>($email)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>check user email is exist.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isUserExist">isUserExist</a>(int $id)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>check user exist by id</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -232,7 +230,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         line 50</div>
+        <div class="location">at         line 51</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>
     <strong>create</strong>(array $data)
         </code>
@@ -272,7 +270,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location">at         line 64</div>
+        <div class="location">at         line 65</div>
         <code>                    
     <strong>update</strong>(<a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a> $user, array $data)
         </code>
@@ -308,7 +306,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findOne">
-        <div class="location">at         line 78</div>
+        <div class="location">at         line 79</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>|null
     <strong>findOne</strong>($id)
         </code>
@@ -347,10 +345,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getAll">
-        <div class="location">at         line 86</div>
+                    <h3 id="method_findAll">
+        <div class="location">at         line 87</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>[]|<abbr title="Illuminate\Database\Eloquent\Collection">Collection</abbr>
-    <strong>getAll</strong>()
+    <strong>findAll</strong>()
         </code>
     </h3>
     <div class="details">
@@ -376,7 +374,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findOneByField">
-        <div class="location">at         line 104</div>
+        <div class="location">at         line 99</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>|null
     <strong>findOneByField</strong>($field, $value)
         </code>
@@ -419,7 +417,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmailExist">
-        <div class="location">at         line 114</div>
+        <div class="location">at         line 111</div>
         <code>                    bool
     <strong>isEmailExist</strong>($email)
         </code>
@@ -428,6 +426,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>check user email is exist.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -457,8 +457,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isUserExist">
-        <div class="location">at         line 123</div>
-        <code>                    
+        <div class="location">at         line 127</div>
+        <code>                    bool
     <strong>isUserExist</strong>(int $id)
         </code>
     </h3>
@@ -466,6 +466,8 @@
             
     
 
+                    <div class="method-description">
+                                    <p>check user exist by id</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -478,6 +480,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -486,7 +497,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_clearCache">
-        <div class="location">at         line 135</div>
+        <div class="location">at         line 141</div>
         <code>                    
     <strong>clearCache</strong>()
         </code>

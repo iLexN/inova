@@ -2,12 +2,12 @@
 
 namespace App\Module\Customer\Services;
 
+use App\Module\Cache\CacheHandlerInterface;
 use App\Module\Customer\Entity\CustomerType;
 use App\Module\Customer\Repository\CustomerTypeRepository;
 use Illuminate\Database\Eloquent\Collection;
 use League\Event\Emitter;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * Class CustomerTypeServices
@@ -24,7 +24,7 @@ class CustomerTypeServices
     /** @var  Emitter */
     private $emit;
 
-    /** @var  FilesystemCache */
+    /** @var  CacheHandlerInterface */
     private $cache;
 
     /**
@@ -79,13 +79,7 @@ class CustomerTypeServices
      */
     public function findAll()
     {
-        $cacheKey = 'customer.type.list';
-        if ($this->cache->has($cacheKey)) {
-            return $this->cache->get($cacheKey);
-        }
-        $result = $this->repository->findAll();
-        $this->cache->set($cacheKey, $result);
-        return $result;
+        return $this->cache->handler('customer.type.list', [$this->repository,'findAll']);
     }
 
     /**

@@ -19,7 +19,7 @@ class Index extends AbstractController
     {
         /** @var UserServices $userServices */
         $userServices = $this->container['userServices'];
-        $userList = $userServices->getAll();
+        $userList = $userServices->findAll();
 
         $out = $this->twig->fetch('user/index.twig', [
             'user_list' => $userList->toJson(),

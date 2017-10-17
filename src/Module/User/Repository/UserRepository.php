@@ -36,7 +36,7 @@ class UserRepository
     /**
      * @return Collection|User[]
      */
-    public function getAll()
+    public function findAll()
     {
         return User::get();
     }

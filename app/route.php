@@ -17,12 +17,12 @@ $app->group('/api', function () {
     $this->post('/customer/{id:\d+}','App\Controller\Api\Customer\Update');
 });
 
-$app->get('/customer','App\Controller\Web\Customer\Index');
-$app->get('/customer/new','App\Controller\Web\Customer\Create');
+$app->get('/customer','App\Controller\Web\Customer\Index')->setName('customer.index');
+$app->get('/customer/new','App\Controller\Web\Customer\Create')->setName('customer.new');
 $app->get('/customer/{id:\d+}','App\Controller\Web\Customer\Show');
 $app->get('/customer/{id:\d+}/edit','App\Controller\Web\Customer\Edit');
-$app->get('/customer/type','App\Controller\Web\Customer\Type\Index');
+$app->get('/customer/type','App\Controller\Web\Customer\Type\Index')->setName('customer.component');
 
-$app->get('/user','App\Controller\Web\User\Index');
-$app->get('/user/new','App\Controller\Web\User\Create');
+$app->get('/user','App\Controller\Web\User\Index')->setName('user.index');
+$app->get('/user/new','App\Controller\Web\User\Create')->setName('user.new');
 $app->get('/user/{id:\d+}','App\Controller\Web\User\Show');

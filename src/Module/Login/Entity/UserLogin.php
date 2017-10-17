@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
+ * @property int $user_id
  * @property string password
  */
 class UserLogin extends Model
@@ -14,6 +15,10 @@ class UserLogin extends Model
     public $timestamps = false;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'user_id' => 'integer',
+    ];
 
     /**
      * hash password

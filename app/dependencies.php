@@ -4,6 +4,7 @@ use App\Event\CustomerListenerProvider;
 use App\Event\UserListenerProvider;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\TextResponse;
+use App\Module\Cache\CacheHandler;
 use App\Module\Customer\Repository\CustomerExtraInfoRepository;
 use App\Module\Customer\Repository\CustomerRepository;
 use App\Module\Customer\Repository\CustomerTypeRepository;
@@ -34,17 +35,20 @@ $container['logger'] = function (ContainerInterface $container) {
 $container['twig'] = function (ContainerInterface $container) {
     $settings = $container->get('twigConfig');
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
-    if (!$container['settings']['displayErrorDetails']) {
-        $view->addExtension(new Twig_Extension_Debug());
-    }
+
+    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
+    $view->addExtension(new \Slim\Views\TwigExtension($container['router'], $basePath));
 
     return $view;
 };
 
 $container['cache'] = function (ContainerInterface $container){
     $settings = $container->get('cacheConfig');
-    return new FilesystemCache($settings['name'], $settings['ttl'],$settings['dir']);
+    $cache = new FilesystemCache($settings['name'], $settings['ttl'],$settings['dir']);
+    return new CacheHandler($cache);
 };
+
+
 
 
 $container['notFoundHandler'] = function (ContainerInterface $container) {

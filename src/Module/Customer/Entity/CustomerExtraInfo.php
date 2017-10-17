@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
+ * @property int $customers_id
  * @property Customers[]|Collection $customer
  */
 class CustomerExtraInfo extends Model
@@ -15,6 +16,10 @@ class CustomerExtraInfo extends Model
     protected $guarded = [];
 
     protected $table = 'customer_extra_info';
+
+    protected $casts =[
+        'customers_id' => 'integer',
+    ];
 
     public function customer()
     {

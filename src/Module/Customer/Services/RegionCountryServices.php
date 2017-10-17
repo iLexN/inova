@@ -2,13 +2,13 @@
 
 namespace App\Module\Customer\Services;
 
+use App\Module\Cache\CacheHandlerInterface;
 use App\Module\Customer\Entity\Countries;
 use App\Module\Customer\Entity\Regions;
 use App\Module\Customer\Repository\RegionCountryRepository;
 use Illuminate\Database\Eloquent\Collection;
 use League\Event\Emitter;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * Class RegionCountryServices
@@ -25,7 +25,7 @@ class RegionCountryServices
     /** @var  Emitter */
     private $emit;
 
-    /** @var  FilesystemCache */
+    /** @var  CacheHandlerInterface */
     private $cache;
 
     /**
@@ -88,13 +88,7 @@ class RegionCountryServices
      */
     public function findAllWithLoad()
     {
-        $cacheKey = 'region.withCountry.list';
-        if ($this->cache->has($cacheKey)) {
-            return $this->cache->get($cacheKey);
-        }
-        $result = $this->repository->findAllWithLoad();
-        $this->cache->set($cacheKey, $result);
-        return $result;
+        return $this->cache->handler('region.withCountry.list', [$this->repository,'findAllWithLoad']);
     }
 
     /**

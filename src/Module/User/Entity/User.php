@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
  * @property UserLogin $login
  * @property string $email
  * @property int|null $head_id
+ * @property int $active
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
  */
 class User extends Model
 {
@@ -22,6 +23,7 @@ class User extends Model
 
     protected $casts = [
         'head_id' => 'integer',
+        'active' => 'integer',
     ];
 
     /**

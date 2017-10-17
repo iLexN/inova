@@ -20,7 +20,7 @@ class Show extends AbstractController
     {
         /** @var UserServices $userServices */
         $userServices = $this->container['userServices'];
-        $userList = $userServices->getAll();
+        $userList = $userServices->findAll();
         $user = $userServices->findOne($args['id']);
 
         $out = $this->twig->fetch('user/create.twig', [
