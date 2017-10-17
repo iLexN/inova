@@ -38,6 +38,7 @@ class UserServices
         $this->cache = $container['cache'];
         $this->emit = $container['eventEmitter'];
         $this->repository = $repository;
+        $this->log = $container['logger'];
     }
 
     /**
@@ -127,8 +128,10 @@ class UserServices
     {
         $user = $this->findOne($id);
         if ($user) {
+            $this->log->info('true');
             return true;
         }
+        $this->log->info('false');
         return false;
     }
 

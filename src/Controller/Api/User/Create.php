@@ -30,7 +30,7 @@ class Create extends AbstractController
             return new JsonResponse(['error'=>'email already exist']);
         }
         
-        if (!empty($input['head_id']) && (!\is_numeric($input['head_id']) || $userServices->isUserExist($input['head_id']))) {
+        if (!empty($input['head_id']) && (!\is_numeric($input['head_id']) || !$userServices->isUserExist($input['head_id']))) {
             return new JsonResponse(['error'=>'belong to not exist']);
         }
 
