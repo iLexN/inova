@@ -1,3 +1,8 @@
+/** global: Vue */
+/** global: user_info */
+/** global: axios */
+/** global: _ */
+
 var app = new Vue({
   el: '#user',
   data: {
@@ -14,30 +19,25 @@ var app = new Vue({
   } ,
   methods :{
     create_user : function() {
-      console.log('create');
       var data = this.user;
-      console.log(data);
       axios.post('/api/user', data).then(function (response) {
         if ( response.data.error !== undefined ){
           alert(response.data.error);
         } else {
           window.location.href = '/user/'+response.data.id;
         }
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     update_user:function(){
-      console.log('create');
       var data = this.user;
       axios.post('/api/user/'+this.user.id, data).then(function (response) {
         if ( response.data.error !== undefined ){
           alert(response.data.error);
         }
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     show_head_name : function(newValue){

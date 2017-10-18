@@ -18,14 +18,14 @@ class Update extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
         //todo add checking
 
         /** @var CustomerServices $services */
         $services = $this->container['customerService'];
 
         /** @var Customers $customer */
-        $customer = $services->findOne($args['id']);
+        $customer = $services->findOne((int) $args['id']);
 
         $code = $input['customer']['code'];
         if ($customer->code !== $code && $services->isCodeExist($code)) {

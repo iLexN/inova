@@ -13,7 +13,7 @@ class Countries extends Model
     public $timestamps = false;
     protected $guarded = [];
 
-    protected $casts =[
-      'regions_id' => 'integer',
+    protected $casts = [
+        'regions_id' => 'integer',
     ];
 }

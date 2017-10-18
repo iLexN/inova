@@ -34,7 +34,7 @@ class UserRepository
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection
      */
     public function findAll()
     {
@@ -42,12 +42,12 @@ class UserRepository
     }
 
     /**
-     * @param $field
-     * @param $value
+     * @param string $field
+     * @param string $value
      *
      * @return User|null
      */
-    public function findOneByField($field, $value)
+    public function findOneByField(string $field, string $value)
     {
         return User::where($field, '=', $value)->first();
     }

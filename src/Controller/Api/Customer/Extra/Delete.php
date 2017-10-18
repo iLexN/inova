@@ -19,7 +19,7 @@ class Delete extends AbstractController
     {
         /** @var CustomerExtraInfoServices $services */
         $services = $this->container['customerExtraServices'];
-        $services->delete($args['id']);
+        $services->delete((int) $args['id']);
 
         return new JsonResponse(['success']);
     }

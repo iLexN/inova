@@ -41,7 +41,7 @@ class Pagination
     public function setPage(int $page)
     {
         $this->page = $page;
-        Paginator::currentPageResolver(function () use ($page) {
+        Paginator::currentPageResolver(function() use ($page) {
             return $page;
         });
     }
@@ -55,12 +55,10 @@ class Pagination
         switch ($this->pageMode) {
             case 1:
                 return $q->simplePaginate($this->item_pre_page);
-                break;
             case 2:
                 return $q->paginate($this->item_pre_page);
             default:
                 return $q->forPage($this->page, $this->item_pre_page)->get();
-                break;
         }
     }
 

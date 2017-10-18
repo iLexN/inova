@@ -17,11 +17,11 @@ class Update extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
 
         /** @var RegionCountryServices $services */
         $services = $this->container['regionServices'];
-        $country = $services->findOneCountry($args['id']);
+        $country = $services->findOneCountry((int) $args['id']);
 
         $services->updateCountry($country, $input);
 

@@ -38,13 +38,15 @@ class UserCreateGenPassword extends AbstractListener
      */
     public function handle(EventInterface $event, User $user = null)
     {
-        /** @var LoginServices $loginServices */
-        $loginServices = $this->container['loginServices'];
-        $pass = $loginServices->generateRandomString();
-        $login = $loginServices->create(['password'=>$pass]);
-        $user->login()->save($login);
+        if ($user){
+            /** @var LoginServices $loginServices */
+            $loginServices = $this->container['loginServices'];
+            $pass = $loginServices->generateRandomString();
+            $login = $loginServices->create(['password'=>$pass]);
+            $user->login()->save($login);
 
-        //save in session for send email
-        Session::set('user.pass', $pass);
+            //save in session for send email
+            Session::set('user.pass', $pass);
+        }
     }
 }
