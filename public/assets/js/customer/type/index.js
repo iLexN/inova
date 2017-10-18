@@ -117,7 +117,7 @@ var region_app = new Vue({
       }
       axios.post('/api/customer/country/'+c.id, data).then(function (response) {
 
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     }

@@ -26,7 +26,7 @@ var app = new Vue({
         } else {
           window.location.href = '/user/'+response.data.id;
         }
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     },
@@ -36,7 +36,7 @@ var app = new Vue({
         if ( response.data.error !== undefined ){
           alert(response.data.error);
         }
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     },

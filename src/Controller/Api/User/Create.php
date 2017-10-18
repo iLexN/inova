@@ -20,7 +20,7 @@ class Create extends AbstractController
         $input = $request->getParsedBody();
 
         //todo: add validation check input
-        $input['head_id'] = !empty($input['head_id']??null) ? $input['head_id'] :null;
+        $input['head_id'] = !empty($input['head_id']??null) ? $input['head_id'] : null;
 
 
         /** @var UserServices $userServices */

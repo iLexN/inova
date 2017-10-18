@@ -81,11 +81,11 @@ class CustomerServices
     /**
      * FindAll
      *
-     * @return Customers[]|Collection|null
+     * @return Collection
      */
     public function findAll()
     {
-        return $this->cache->handler('customers.list', [$this->repository,'findAll']);
+        return $this->cache->handler('customers.list', [$this->repository, 'findAll']);
     }
 
     /**

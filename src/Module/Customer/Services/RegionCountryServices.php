@@ -48,7 +48,7 @@ class RegionCountryServices
      */
     public function createRegion(array $data) : Regions
     {
-        $region =$this->repository->createRegion($data);
+        $region = $this->repository->createRegion($data);
         $this->emit->emit('customer.region.create', $region);
         $this->clearCache();
         return $region;
@@ -88,7 +88,7 @@ class RegionCountryServices
      */
     public function findAllWithLoad()
     {
-        return $this->cache->handler('region.withCountry.list', [$this->repository,'findAllWithLoad']);
+        return $this->cache->handler('region.withCountry.list', [$this->repository, 'findAllWithLoad']);
     }
 
     /**

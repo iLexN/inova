@@ -122,8 +122,8 @@ var app = new Vue({
           window.location.href = '/customer/'+response.data.id;
         }
         console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     update_customer:function(){
@@ -136,8 +136,8 @@ var app = new Vue({
       };
       axios.post('/api/customer/'+this.customer.id, data).then(function (response) {
         console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     delete_extra : function (index, id){
@@ -152,8 +152,8 @@ var app = new Vue({
       axios.post('/api/customer/extra/'+id, data).then(function (response) {
         console.log(response);
         self.extra.splice(index, 1);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     delete_staff : function (index){

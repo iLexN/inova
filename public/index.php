@@ -1,12 +1,13 @@
 <?php
 use Dotenv\Dotenv;
-use ParagonIE\Cookie\Session as SessionHandler;
+use ParagonIE\Cookie\Session as SessionManager;
+
 
 date_default_timezone_set('Asia/Hong_Kong');
 
 $autoloader = require '../vendor/autoload.php';
 
-SessionHandler::start();
+SessionManager::start();
 
 $evn = new Dotenv(__DIR__.'/../');
 $evn->load();

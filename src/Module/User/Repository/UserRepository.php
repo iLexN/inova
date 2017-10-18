@@ -34,7 +34,7 @@ class UserRepository
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection
      */
     public function findAll()
     {

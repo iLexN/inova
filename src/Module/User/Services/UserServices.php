@@ -85,7 +85,7 @@ class UserServices
      */
     public function findAll() : Collection
     {
-        return $this->cache->handler('user.list', [$this->repository,'findAll']);
+        return $this->cache->handler('user.list', [$this->repository, 'findAll']);
     }
 
 

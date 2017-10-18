@@ -39,7 +39,7 @@ class RegionCountryRepository
     }
 
     /**
-     * @return Collection|Regions[]
+     * @return Collection
      */
     public function findAll()
     {
@@ -49,7 +49,7 @@ class RegionCountryRepository
     /**
      * Find All Regions with Countries
      *
-     * @return Collection|Regions[]
+     * @return Collection
      */
     public function findAllWithLoad()
     {
