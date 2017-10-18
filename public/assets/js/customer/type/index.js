@@ -38,7 +38,7 @@ var type_app = new Vue({
       var data = {
         name : t.name
       }
-      axios.post('/api/customer/type/'+t.id, data).then(function (response) {
+      axios.post('/api/customer/type/'+t.id, data).then(function () {
 
       }).catch(function () {
 
@@ -87,7 +87,7 @@ var region_app = new Vue({
       var data = {
         name : r.name
       };
-      axios.post('/api/customer/region/'+r.id, data).then(function (response) {
+      axios.post('/api/customer/region/'+r.id, data).then(function () {
 
       }).catch(function () {
 
@@ -115,7 +115,7 @@ var region_app = new Vue({
       var data = {
         name : c.name
       }
-      axios.post('/api/customer/country/'+c.id, data).then(function (response) {
+      axios.post('/api/customer/country/'+c.id, data).then(function () {
 
       }).catch(function () {
 
