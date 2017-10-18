@@ -42,9 +42,9 @@ $container['twig'] = function(ContainerInterface $container) {
     return $view;
 };
 
-$container['cache'] = function(ContainerInterface $container){
+$container['cache'] = function(ContainerInterface $container) {
     $settings = $container->get('cacheConfig');
-    $cache = new FilesystemCache($settings['name'], $settings['ttl'],$settings['dir']);
+    $cache = new FilesystemCache($settings['name'], $settings['ttl'], $settings['dir']);
     return new CacheHandler($cache);
 };
 
@@ -52,7 +52,7 @@ $container['cache'] = function(ContainerInterface $container){
 
 
 $container['notFoundHandler'] = function(ContainerInterface $container) {
-    return function (ServerRequestInterface $request, ResponseInterface $response) use ($container) {
+    return function(ServerRequestInterface $request, ResponseInterface $response) use ($container) {
         /** @var Psr\Log\LoggerInterface $logger */
         $logger = $container['logger'];
         $logger->error('404');
@@ -62,7 +62,7 @@ $container['notFoundHandler'] = function(ContainerInterface $container) {
 };
 
 $container['errorHandler'] = function(ContainerInterface $container) {
-    return function (ServerRequestInterface $request, ResponseInterface $response, \Exception $exception) use ($container) {
+    return function(ServerRequestInterface $request, ResponseInterface $response, \Exception $exception) use ($container) {
         /** @var Psr\Log\LoggerInterface $logger */
         $logger = $container['logger'];
         $logger->error('error handler', (array) $exception);
@@ -72,7 +72,7 @@ $container['errorHandler'] = function(ContainerInterface $container) {
 };
 
 $container['phpErrorHandler'] = function(ContainerInterface $container) {
-    return function (ServerRequestInterface $request, ResponseInterface $response, $error) use ($container) {
+    return function(ServerRequestInterface $request, ResponseInterface $response, $error) use ($container) {
         /** @var Psr\Log\LoggerInterface $logger */
         $logger = $container['logger'];
         $logger->error('php error handler', (array) $error);
@@ -88,16 +88,16 @@ $container['loginServices'] = function(ContainerInterface $container) {
     return new LoginServices($container, new LoginRepository());
 };
 //customer services
-$container['regionServices'] = function(ContainerInterface $container){
+$container['regionServices'] = function(ContainerInterface $container) {
     return new RegionCountryServices($container, new RegionCountryRepository());
 };
-$container['customerTypeServices'] = function(ContainerInterface $container){
+$container['customerTypeServices'] = function(ContainerInterface $container) {
     return new CustomerTypeServices($container, new CustomerTypeRepository());
 };
-$container['customerExtraServices'] = function(ContainerInterface $container){
+$container['customerExtraServices'] = function(ContainerInterface $container) {
     return new CustomerExtraInfoServices($container, new CustomerExtraInfoRepository());
 };
-$container['customerService'] = function(ContainerInterface $container){
+$container['customerService'] = function(ContainerInterface $container) {
     return new CustomerServices($container, new CustomerRepository());
 };
 

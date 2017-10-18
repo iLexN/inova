@@ -2,7 +2,7 @@
 
 $app->get('/', 'App\Controller\Info');
 
-$app->group('/api', function () {
+$app->group('/api', function() {
     $this->post('/user', 'App\Controller\Api\User\Create');
     $this->post('/user/{id:\d+}', 'App\Controller\Api\User\Update');
 

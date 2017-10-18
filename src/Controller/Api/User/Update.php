@@ -20,7 +20,7 @@ class Update extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        $input = (array)$request->getParsedBody();
+        $input = (array) $request->getParsedBody();
 
         //todo: add validation check input
         $input['head_id'] = !empty($input['head_id'] ?? null) ? $input['head_id'] : null;
@@ -29,7 +29,7 @@ class Update extends AbstractController
         $userServices = $this->container['userServices'];
 
         /** @var User $user */
-        $user = $userServices->findOne($args['id']);
+        $user = $userServices->findOne((int)$args['id']);
 
         if ($user->email !== $input['email'] && $userServices->isEmailExist($input['email'])) {
             return new JsonResponse(['error' => 'email already exist']);
