@@ -90,12 +90,12 @@ class UserServices
 
 
     /**
-     * @param $field
-     * @param $value
+     * @param string $field
+     * @param string $value
      *
      * @return User|null
      */
-    public function findOneByField($field, $value)
+    public function findOneByField(string $field, string $value)
     {
         return $this->repository->findOneByField($field, $value);
     }
@@ -107,7 +107,7 @@ class UserServices
      *
      * @return bool
      */
-    public function isEmailExist($email) : bool
+    public function isEmailExist(string $email) : bool
     {
         $user = $this->findOneByField('email', $email);
         if ($user) {
@@ -126,10 +126,7 @@ class UserServices
     public function isUserExist(int $id):bool
     {
         $user = $this->findOne($id);
-        if ($user) {
-            return true;
-        }
-        return false;
+        return (bool) $user;
     }
 
     /**

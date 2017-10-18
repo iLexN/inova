@@ -26,7 +26,7 @@ class Show extends AbstractController
         $out = $this->twig->fetch('user/create.twig', [
             'mode' => 'edit',
             'user_info' => $user,
-            'userList' => $userList->filter(function (User $u) use ($user) {
+            'userList' => $userList->filter(function(User $u) use ($user) {
                 return $u->id !== $user->id;
             }),
         ]);

@@ -23,7 +23,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\Cache\Simple\FilesystemCache;
 
-$container['logger'] = function (ContainerInterface $container) {
+$container['logger'] = function(ContainerInterface $container) {
     $settings = $container->get('logConfig');
     $logger = new \Monolog\Logger($settings['name']);
     $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
@@ -32,7 +32,7 @@ $container['logger'] = function (ContainerInterface $container) {
 };
 
 // Twig
-$container['twig'] = function (ContainerInterface $container) {
+$container['twig'] = function(ContainerInterface $container) {
     $settings = $container->get('twigConfig');
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
 
@@ -42,7 +42,7 @@ $container['twig'] = function (ContainerInterface $container) {
     return $view;
 };
 
-$container['cache'] = function (ContainerInterface $container){
+$container['cache'] = function(ContainerInterface $container){
     $settings = $container->get('cacheConfig');
     $cache = new FilesystemCache($settings['name'], $settings['ttl'],$settings['dir']);
     return new CacheHandler($cache);
@@ -51,7 +51,7 @@ $container['cache'] = function (ContainerInterface $container){
 
 
 
-$container['notFoundHandler'] = function (ContainerInterface $container) {
+$container['notFoundHandler'] = function(ContainerInterface $container) {
     return function (ServerRequestInterface $request, ResponseInterface $response) use ($container) {
         /** @var Psr\Log\LoggerInterface $logger */
         $logger = $container['logger'];
@@ -61,7 +61,7 @@ $container['notFoundHandler'] = function (ContainerInterface $container) {
     };
 };
 
-$container['errorHandler'] = function (ContainerInterface $container) {
+$container['errorHandler'] = function(ContainerInterface $container) {
     return function (ServerRequestInterface $request, ResponseInterface $response, \Exception $exception) use ($container) {
         /** @var Psr\Log\LoggerInterface $logger */
         $logger = $container['logger'];
@@ -71,7 +71,7 @@ $container['errorHandler'] = function (ContainerInterface $container) {
     };
 };
 
-$container['phpErrorHandler'] = function (ContainerInterface $container) {
+$container['phpErrorHandler'] = function(ContainerInterface $container) {
     return function (ServerRequestInterface $request, ResponseInterface $response, $error) use ($container) {
         /** @var Psr\Log\LoggerInterface $logger */
         $logger = $container['logger'];
@@ -81,28 +81,28 @@ $container['phpErrorHandler'] = function (ContainerInterface $container) {
     };
 };
 
-$container['userServices'] = function (ContainerInterface $container) {
+$container['userServices'] = function(ContainerInterface $container) {
     return new UserServices($container, new UserRepository());
 };
-$container['loginServices'] = function (ContainerInterface $container) {
+$container['loginServices'] = function(ContainerInterface $container) {
     return new LoginServices($container, new LoginRepository());
 };
 //customer services
-$container['regionServices'] = function (ContainerInterface $container){
-  return new RegionCountryServices($container, new RegionCountryRepository());
+$container['regionServices'] = function(ContainerInterface $container){
+    return new RegionCountryServices($container, new RegionCountryRepository());
 };
-$container['customerTypeServices'] = function (ContainerInterface $container){
+$container['customerTypeServices'] = function(ContainerInterface $container){
     return new CustomerTypeServices($container, new CustomerTypeRepository());
 };
-$container['customerExtraServices'] = function (ContainerInterface $container){
+$container['customerExtraServices'] = function(ContainerInterface $container){
     return new CustomerExtraInfoServices($container, new CustomerExtraInfoRepository());
 };
-$container['customerService'] = function (ContainerInterface $container){
+$container['customerService'] = function(ContainerInterface $container){
     return new CustomerServices($container, new CustomerRepository());
 };
 
 
-$container['eventEmitter'] = function (ContainerInterface $container) {
+$container['eventEmitter'] = function(ContainerInterface $container) {
     $emitter = new Emitter;
     $emitter->useListenerProvider(new UserListenerProvider($container));
     $emitter->useListenerProvider(new CustomerListenerProvider($container));

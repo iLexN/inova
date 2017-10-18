@@ -17,7 +17,7 @@ class Update extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        $input = $request->getParsedBody();
+        $input = (array)$request->getParsedBody();
 
         /** @var RegionCountryServices $services */
         $services = $this->container['regionServices'];

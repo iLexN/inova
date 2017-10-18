@@ -20,7 +20,7 @@ class Update extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        $input = $request->getParsedBody();
+        $input = (array)$request->getParsedBody();
 
         //todo: add validation check input
         $input['head_id'] = !empty($input['head_id'] ?? null) ? $input['head_id'] : null;

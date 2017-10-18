@@ -12,7 +12,6 @@ SessionManager::start();
 $evn = new Dotenv(__DIR__.'/../');
 $evn->load();
 
-//$settings = \json_decode(file_get_contents(__DIR__.'/../config/app-config.json'), true);
 $conf = new Noodlehaus\Config(__DIR__.'/../config');
 $settings = $conf->all() ?: [];
 

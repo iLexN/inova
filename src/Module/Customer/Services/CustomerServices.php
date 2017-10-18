@@ -201,10 +201,7 @@ class CustomerServices
         }
 
         $customer = $this->findOneByField('code', $code);
-        if ($customer) {
-            return true;
-        }
-        return false;
+        return (bool) $customer;
     }
 
     /**
