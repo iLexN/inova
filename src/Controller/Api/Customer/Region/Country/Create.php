@@ -21,7 +21,7 @@ class Create extends AbstractController
 
         /** @var RegionCountryServices $services */
         $services = $this->container['regionServices'];
-        $region = $services->findOneRegion((int)$args['id']);
+        $region = $services->findOneRegion((int) $args['id']);
 
         if (!$region) {
             return new JsonResponse(['error'=>'no this region']);

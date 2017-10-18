@@ -29,7 +29,7 @@ class Update extends AbstractController
         $userServices = $this->container['userServices'];
 
         /** @var User $user */
-        $user = $userServices->findOne((int)$args['id']);
+        $user = $userServices->findOne((int) $args['id']);
 
         if ($user->email !== $input['email'] && $userServices->isEmailExist($input['email'])) {
             return new JsonResponse(['error' => 'email already exist']);

@@ -24,7 +24,7 @@ class Show extends AbstractController
     {
         /** @var CustomerServices $customerServices */
         $customerServices = $this->container['customerService'];
-        $customer = $customerServices->findOne((int)$args['id']);
+        $customer = $customerServices->findOne((int) $args['id']);
         // Get related info
         $customerInfo = $customer->toJson();
         $customerType = $customer->type->pluck('id')->toJson();

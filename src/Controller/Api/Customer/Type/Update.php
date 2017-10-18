@@ -22,7 +22,7 @@ class Update extends AbstractController
         /** @var CustomerTypeServices $services */
         $services = $this->container['customerTypeServices'];
 
-        $type = $services->findOne((int)$args['id']);
+        $type = $services->findOne((int) $args['id']);
         $services->update($type, $input);
 
         return new JsonResponse($type);

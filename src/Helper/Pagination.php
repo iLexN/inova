@@ -59,7 +59,6 @@ class Pagination
                 return $q->paginate($this->item_pre_page);
             default:
                 return $q->forPage($this->page, $this->item_pre_page)->get();
-                break;
         }
     }
 

@@ -21,7 +21,7 @@ class Update extends AbstractController
 
         /** @var RegionCountryServices $services */
         $services = $this->container['regionServices'];
-        $country = $services->findOneCountry((int)$args['id']);
+        $country = $services->findOneCountry((int) $args['id']);
 
         $services->updateCountry($country, $input);
 

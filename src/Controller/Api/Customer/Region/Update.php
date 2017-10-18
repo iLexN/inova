@@ -22,7 +22,7 @@ class Update extends AbstractController
         /** @var RegionCountryServices $services */
         $services = $this->container['regionServices'];
 
-        $region = $services->findOneRegion((int)$args['id']);
+        $region = $services->findOneRegion((int) $args['id']);
         $services->updateRegion($region, $input);
 
         return new JsonResponse($region);

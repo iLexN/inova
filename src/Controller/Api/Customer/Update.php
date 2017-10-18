@@ -25,7 +25,7 @@ class Update extends AbstractController
         $services = $this->container['customerService'];
 
         /** @var Customers $customer */
-        $customer = $services->findOne((int)$args['id']);
+        $customer = $services->findOne((int) $args['id']);
 
         $code = $input['customer']['code'];
         if ($customer->code !== $code && $services->isCodeExist($code)) {

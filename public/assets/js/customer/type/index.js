@@ -27,7 +27,7 @@ var type_app = new Vue({
       axios.post('/api/customer/type', this.type).then(function (response) {
         self.type.name = '';
       self.type_list.push(response.data);
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     },
@@ -40,7 +40,7 @@ var type_app = new Vue({
       }
       axios.post('/api/customer/type/'+t.id, data).then(function (response) {
 
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     }
@@ -76,7 +76,7 @@ var region_app = new Vue({
         data.countries = [];
         self.regions_list.push(response.data);
         self.region.name = '';
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     },
@@ -89,7 +89,7 @@ var region_app = new Vue({
       };
       axios.post('/api/customer/region/'+r.id, data).then(function (response) {
 
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     },
@@ -104,7 +104,7 @@ var region_app = new Vue({
       axios.post('/api/customer/region/'+r.id+'/country', data).then(function (response) {
         self.regions_list[r_index].countries.push(response.data);
         r.new_country = '';
-      }).catch(function (error) {
+      }).catch(function () {
 
       });
     },
