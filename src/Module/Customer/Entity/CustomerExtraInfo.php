@@ -17,7 +17,7 @@ class CustomerExtraInfo extends Model
 
     protected $table = 'customer_extra_info';
 
-    protected $casts =[
+    protected $casts = [
         'customers_id' => 'integer',
     ];
 

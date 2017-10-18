@@ -79,7 +79,7 @@ class CustomerTypeServices
      */
     public function findAll()
     {
-        return $this->cache->handler('customer.type.list', [$this->repository,'findAll']);
+        return $this->cache->handler('customer.type.list', [$this->repository, 'findAll']);
     }
 
     /**

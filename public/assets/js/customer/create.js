@@ -1,3 +1,14 @@
+/** global: Vue */
+/** global: _ */
+/** global: axios */
+/** global: customer_info */
+/** global: customer_extra */
+/** global: customer_type */
+/** global: customer_staff */
+/** global: region */
+/** global: staff_list */
+
+
 var app = new Vue({
   el: '#customer',
   data: {
@@ -75,6 +86,7 @@ var app = new Vue({
       }
       this.extra.push(Object.assign({}, this.extra_info));
       this.reest_type();
+      return true;
     },
     reest_type : function(){
       this.extra_info.customer_name = '';
@@ -110,8 +122,8 @@ var app = new Vue({
           window.location.href = '/customer/'+response.data.id;
         }
         console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     update_customer:function(){
@@ -124,8 +136,8 @@ var app = new Vue({
       };
       axios.post('/api/customer/'+this.customer.id, data).then(function (response) {
         console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     delete_extra : function (index, id){
@@ -140,11 +152,11 @@ var app = new Vue({
       axios.post('/api/customer/extra/'+id, data).then(function (response) {
         console.log(response);
         self.extra.splice(index, 1);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
-    delete_staff : function (index, id){
+    delete_staff : function (index){
         this.staff.splice(index, 1);
     }
   }

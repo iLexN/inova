@@ -21,12 +21,12 @@ class Show extends AbstractController
         /** @var UserServices $userServices */
         $userServices = $this->container['userServices'];
         $userList = $userServices->findAll();
-        $user = $userServices->findOne($args['id']);
+        $user = $userServices->findOne((int) $args['id']);
 
         $out = $this->twig->fetch('user/create.twig', [
             'mode' => 'edit',
             'user_info' => $user,
-            'userList' => $userList->filter(function (User $u) use ($user) {
+            'userList' => $userList->filter(function(User $u) use ($user) {
                 return $u->id !== $user->id;
             }),
         ]);

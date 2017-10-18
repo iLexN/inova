@@ -20,7 +20,7 @@ class Index extends AbstractController
         /** @var CustomerServices $customerServices */
         $customerServices = $this->container['customerService'];
         $customerList = $customerServices->findAll();
-        $customerList->load(['type','region','country','extra','staff']);
+        $customerList->load(['type', 'region', 'country', 'extra', 'staff']);
 
         $out = $this->twig->fetch('customer/index.twig', [
             'customer_list' => $customerList->toJson(),

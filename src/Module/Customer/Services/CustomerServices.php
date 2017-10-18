@@ -81,11 +81,11 @@ class CustomerServices
     /**
      * FindAll
      *
-     * @return Customers[]|Collection|null
+     * @return Collection
      */
     public function findAll()
     {
-        return $this->cache->handler('customers.list', [$this->repository,'findAll']);
+        return $this->cache->handler('customers.list', [$this->repository, 'findAll']);
     }
 
     /**
@@ -201,10 +201,7 @@ class CustomerServices
         }
 
         $customer = $this->findOneByField('code', $code);
-        if ($customer) {
-            return true;
-        }
-        return false;
+        return (bool) $customer;
     }
 
     /**
