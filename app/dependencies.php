@@ -39,6 +39,8 @@ $container['twig'] = function(ContainerInterface $container) {
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new \Slim\Views\TwigExtension($container['router'], $basePath));
 
+    $view['appVersion'] = getenv('APP_VERSION');
+
     return $view;
 };
 
