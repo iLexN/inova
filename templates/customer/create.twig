@@ -84,7 +84,7 @@
                 <td v-text="get_staff_info(s,'name')"></td>
                 <td v-text="get_staff_info(s,'email')"></td>
                 <td v-text="get_staff_info(s,'title')"></td>
-                <td><input type="button" value="delete" v-on:click="delete_staff(index,s.id)"></td>
+                <td><input type="button" value="delete" v-on:click="delete_staff(index)"></td>
             </tr>
         </table>
     </div>
@@ -101,5 +101,5 @@
     var customer_staff = {{ customer_staff | raw }};
     var staff_list = {{ staff_list | raw }};
 </script>
-<script src="/assets/js/customer/create.js"></script>
+<script src="/assets/js/customer/create.js?v={{ appVersion }}"></script>
 {% endblock %}

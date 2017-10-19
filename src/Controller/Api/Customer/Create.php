@@ -17,7 +17,7 @@ class Create extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
 
         //todo add checking
 

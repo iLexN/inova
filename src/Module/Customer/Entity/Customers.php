@@ -22,7 +22,7 @@ class Customers extends Model
     public $timestamps = false;
     protected $guarded = [];
 
-    protected $casts =[
+    protected $casts = [
         'region_id' => 'integer',
         'country_id' => 'integer',
     ];

@@ -34,7 +34,7 @@ class CustomerTypeRepository
     }
 
     /**
-     * @return Collection|CustomerType[]
+     * @return Collection
      */
     public function findAll()
     {

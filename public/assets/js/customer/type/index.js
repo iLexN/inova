@@ -1,3 +1,9 @@
+/** global: Vue */
+/** global: type_list */
+/** global: axios */
+/** global: regions_list */
+
+
 var type_app = new Vue({
   el: '#type_list',
   data: {
@@ -19,11 +25,10 @@ var type_app = new Vue({
       }
       var self = this;
       axios.post('/api/customer/type', this.type).then(function (response) {
-        console.log(response);
         self.type.name = '';
       self.type_list.push(response.data);
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     update:function(t){
@@ -33,10 +38,10 @@ var type_app = new Vue({
       var data = {
         name : t.name
       }
-      axios.post('/api/customer/type/'+t.id, data).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      axios.post('/api/customer/type/'+t.id, data).then(function () {
+
+      }).catch(function () {
+
       });
     }
   }
@@ -66,13 +71,13 @@ var region_app = new Vue({
       }
       var self = this;
       axios.post('/api/customer/region', this.region).then(function (response) {
-        console.log(response);
+
         var data = response.data;
         data.countries = [];
         self.regions_list.push(response.data);
         self.region.name = '';
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     updateRegion:function(r){
@@ -82,15 +87,13 @@ var region_app = new Vue({
       var data = {
         name : r.name
       };
-      axios.post('/api/customer/region/'+r.id, data).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      axios.post('/api/customer/region/'+r.id, data).then(function () {
+
+      }).catch(function () {
+
       });
     },
     addCountry : function(r,r_index) {
-      console.log(typeof r.new_country);
-      console.log(r_index);
       if ( typeof r.new_country === 'undefined' ||  r.new_country === ''){
         return;
       }
@@ -99,11 +102,10 @@ var region_app = new Vue({
       };
       var self = this;
       axios.post('/api/customer/region/'+r.id+'/country', data).then(function (response) {
-        console.log(response);
         self.regions_list[r_index].countries.push(response.data);
         r.new_country = '';
-      }).catch(function (error) {
-        console.log(error);
+      }).catch(function () {
+
       });
     },
     updateCountry:function(c){
@@ -113,10 +115,10 @@ var region_app = new Vue({
       var data = {
         name : c.name
       }
-      axios.post('/api/customer/country/'+c.id, data).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
+      axios.post('/api/customer/country/'+c.id, data).then(function () {
+
+      }).catch(function () {
+
       });
     }
   }

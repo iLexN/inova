@@ -34,7 +34,6 @@ class LoginServices
      */
     public function __construct(ContainerInterface $container, LoginRepository $repository)
     {
-        //$this->container = $container;
         $this->repository = $repository;
         $this->emit = $container['eventEmitter'];
         $this->userServices = $container['userServices'];
@@ -82,11 +81,7 @@ class LoginServices
             return false;
         }
         $login = $user->login;
-        if ($login->isSamePass($pass)) {
-            //$this->update($login, ['last_login'=> Carbon::now()]);
-            return true;
-        }
-        return false;
+        return $login->isSamePass($pass);
     }
 
     /**

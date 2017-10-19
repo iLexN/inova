@@ -17,11 +17,11 @@ class Create extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
 
         /** @var RegionCountryServices $services */
         $services = $this->container['regionServices'];
-        $region = $services->findOneRegion($args['id']);
+        $region = $services->findOneRegion((int) $args['id']);
 
         if (!$region) {
             return new JsonResponse(['error'=>'no this region']);
