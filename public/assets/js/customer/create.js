@@ -134,8 +134,8 @@ var app = new Vue({
         'extra' : this.extra,
         'staff' : this.staff
       };
-      axios.post('/api/customer/'+this.customer.id, data).then(function (response) {
-        console.log(response);
+      axios.post('/api/customer/'+this.customer.id, data).then(function () {
+
       }).catch(function () {
 
       });
@@ -149,8 +149,7 @@ var app = new Vue({
         '_METHOD' : 'DELETE'
       };
       var self = this;
-      axios.post('/api/customer/extra/'+id, data).then(function (response) {
-        console.log(response);
+      axios.post('/api/customer/extra/'+id, data).then(function () {
         self.extra.splice(index, 1);
       }).catch(function () {
 

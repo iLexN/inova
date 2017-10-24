@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller\Api\Customer\Region;
+namespace App\Controller\Api\Product\Component;
 
 use App\Controller\AbstractController;
-use App\Module\Customer\Services\RegionCountryServices;
+use App\Module\Product\Services\ProductComponentServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\ResponseResultInterface;
@@ -11,7 +11,7 @@ use App\Helper\ResponseResult\ResponseResultInterface;
 /**
  * Class Update
  *
- * @package App\Controller\Api\Customer\Region
+ * @package App\Controller\Api\Product\Component
  */
 class Update extends AbstractController
 {
@@ -24,12 +24,12 @@ class Update extends AbstractController
     {
         $input = (array) $request->getParsedBody();
 
-        /** @var RegionCountryServices $services */
-        $services = $this->container['regionServices'];
+        /** @var ProductComponentServices $services */
+        $services = $this->container['productComponentServices'];
 
-        $region = $services->findOneRegion((int) $args['id']);
-        $services->updateRegion($region, $input);
+        $one = $services->findOne($args['id']);
+        $services->update($one, $input);
 
-        return new JsonResponse($region);
+        return new JsonResponse($one);
     }
 }

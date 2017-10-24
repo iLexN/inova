@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller\Api\Customer\Extra;
+namespace App\Controller\Api\Product\Component;
 
 use App\Controller\AbstractController;
-use App\Module\Customer\Services\CustomerExtraInfoServices;
+use App\Module\Product\Services\ProductComponentServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\ResponseResultInterface;
@@ -11,7 +11,7 @@ use App\Helper\ResponseResult\ResponseResultInterface;
 /**
  * Class Delete
  *
- * @package App\Controller\Api\Customer\Extra
+ * @package App\Controller\Api\Product\Component
  */
 class Delete extends AbstractController
 {
@@ -22,9 +22,9 @@ class Delete extends AbstractController
      */
     public function action(ServerRequestInterface $request, array $args): ResponseResultInterface
     {
-        /** @var CustomerExtraInfoServices $services */
-        $services = $this->container['customerExtraServices'];
-        $services->delete((int) $args['id']);
+        /** @var ProductComponentServices $services */
+        $services = $this->container['productComponentServices'];
+        $services->delete($args['id']);
 
         return new JsonResponse(['success']);
     }

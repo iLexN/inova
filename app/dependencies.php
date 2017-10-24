@@ -15,6 +15,8 @@ use App\Module\Customer\Services\CustomerTypeServices;
 use App\Module\Customer\Services\RegionCountryServices;
 use App\Module\Login\Repository\LoginRepository;
 use App\Module\Login\Services\LoginServices;
+use App\Module\Product\Repository\ProductComponentRepository;
+use App\Module\Product\Services\ProductComponentServices;
 use App\Module\User\Repository\UserRepository;
 use App\Module\User\Services\UserServices;
 use League\Event\Emitter;
@@ -101,6 +103,10 @@ $container['customerExtraServices'] = function(ContainerInterface $container) {
 };
 $container['customerService'] = function(ContainerInterface $container) {
     return new CustomerServices($container, new CustomerRepository());
+};
+
+$container['productComponentServices'] = function(ContainerInterface $container) {
+    return new ProductComponentServices($container, new ProductComponentRepository());
 };
 
 

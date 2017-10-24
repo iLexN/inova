@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controller\Api\Customer;
+namespace App\Controller\Api\Product\Component;
 
 use App\Controller\AbstractController;
-use App\Module\Customer\Services\CustomerServices;
+use App\Module\Product\Services\ProductComponentServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\ResponseResultInterface;
@@ -11,7 +11,7 @@ use App\Helper\ResponseResult\ResponseResultInterface;
 /**
  * Class Create
  *
- * @package App\Controller\Api\Customer
+ * @package App\Controller\Api\Product\Component
  */
 class Create extends AbstractController
 {
@@ -24,17 +24,11 @@ class Create extends AbstractController
     {
         $input = (array) $request->getParsedBody();
 
-        //todo add checking
+        /** @var ProductComponentServices $services */
+        $services = $this->container['productComponentServices'];
 
-        /** @var CustomerServices $services */
-        $services = $this->container['customerService'];
+        $one = $services->create($input);
 
-        if ($services->isCodeExist($input['customer']['code'])) {
-            return new JsonResponse(['error'=>'code already exist']);
-        }
-
-        $customer = $services->createCustomer($input);
-
-        return new JsonResponse($customer);
+        return new JsonResponse($one);
     }
 }
