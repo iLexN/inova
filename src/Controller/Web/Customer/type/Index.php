@@ -9,6 +9,11 @@ use App\Module\Customer\Services\RegionCountryServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Index
+ *
+ * @package App\Controller\Web\Customer\type
+ */
 class Index extends AbstractController
 {
     /**
