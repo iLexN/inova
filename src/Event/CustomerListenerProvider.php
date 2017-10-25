@@ -7,6 +7,11 @@ use League\Event\ListenerAcceptorInterface;
 use League\Event\ListenerProviderInterface;
 use Psr\Container\ContainerInterface;
 
+/**
+ * Class CustomerListenerProvider
+ *
+ * @package App\Event
+ */
 class CustomerListenerProvider implements ListenerProviderInterface
 {
     /**
@@ -14,6 +19,11 @@ class CustomerListenerProvider implements ListenerProviderInterface
      */
     private $container;
 
+    /**
+     * CustomerListenerProvider constructor.
+     *
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;

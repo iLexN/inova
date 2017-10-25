@@ -1,0 +1,38 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+    <H2>Product Category</H2>
+    <div id="product_component">
+
+        <input type="text" v-model="new_info.value">
+
+        <select v-model="new_info.type">
+            <option value="">------</option>
+            {% for type in type_list %}
+                <option value="{{ type }}" >{{ type }}</option>
+            {% endfor %}
+        </select>
+        <input type="button" v-on:click="create" value="Add">
+
+        {% for type in type_list %}
+            <div>
+                <h3>{{ type }}</h3>
+                <div v-for="r in {{ type }}_list">
+                    <input type="text" v-model="r.value">
+                    <input type="button" v-on:click="edit(r)" value="edit">
+                    <input type="button" v-on:click="remove(r)" value="remove">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block js_footer %}
+    <script>
+      var new_info = {{ new_info | raw }};
+      var list = {{ list | raw }};
+      var type_list = {{ type_list | json_encode | raw }}
+    </script>
+    <script src="/assets/js/product/component.js?v={{ appVersion }}"></script>
+{% endblock %}

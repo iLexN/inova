@@ -10,6 +10,11 @@ use App\Module\User\Services\UserServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Create
+ *
+ * @package App\Controller\Web\Customer
+ */
 class Create extends AbstractController
 {
     /**

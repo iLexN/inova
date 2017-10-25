@@ -8,6 +8,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Delete
+ *
+ * @package App\Controller\Api\Customer\Extra
+ */
 class Delete extends AbstractController
 {
     /**

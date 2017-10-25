@@ -8,6 +8,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Create
+ *
+ * @package App\Controller\Api\Customer
+ */
 class Create extends AbstractController
 {
     /**

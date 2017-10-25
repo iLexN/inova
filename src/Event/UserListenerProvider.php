@@ -20,6 +20,11 @@ class UserListenerProvider implements ListenerProviderInterface
     private $container;
 
 
+    /**
+     * UserListenerProvider constructor.
+     *
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;

@@ -38,7 +38,7 @@ class UserCreateGenPassword extends AbstractListener
      */
     public function handle(EventInterface $event, User $user = null)
     {
-        if ($user){
+        if ($user) {
             /** @var LoginServices $loginServices */
             $loginServices = $this->container['loginServices'];
             $pass = $loginServices->generateRandomString();
