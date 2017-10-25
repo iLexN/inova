@@ -1,7 +1,9 @@
 /** global: Vue */
 /** global: _ */
 /** global: axios */
-
+/** global: new_info */
+/** global: type_list */
+/** global: list */
 
 
 var app = new Vue({

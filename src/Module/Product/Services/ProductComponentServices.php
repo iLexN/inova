@@ -20,10 +20,10 @@ class ProductComponentServices
     private $repository;
 
     /** @var  Emitter */
-    private $emit;
+    //private $emit;
 
     /** @var  CacheHandlerInterface */
-    private $cache;
+    //private $cache;
 
     /**
      * ProductComponentServices constructor.
@@ -34,8 +34,8 @@ class ProductComponentServices
     public function __construct(ContainerInterface $container, ProductComponentRepository $repository)
     {
         $this->repository = $repository;
-        $this->emit = $container['eventEmitter'];
-        $this->cache = $container['cache'];
+        //$this->emit = $container['eventEmitter'];
+        //$this->cache = $container['cache'];
     }
 
     /**
@@ -68,7 +68,7 @@ class ProductComponentServices
     /**
      * @param int $id
      *
-     * @return Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
+     * @return Component|null
      */
     public function findOne(int $id)
     {

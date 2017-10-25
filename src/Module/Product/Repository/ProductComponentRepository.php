@@ -31,7 +31,7 @@ class ProductComponentRepository
     }
 
     /**
-     * @param $id
+     * @param integer $id
      *
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      */
