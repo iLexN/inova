@@ -23,7 +23,7 @@ class ProductComponentServices
     //private $emit;
 
     /** @var  CacheHandlerInterface */
-    //private $cache;
+    private $cache;
 
     /**
      * ProductComponentServices constructor.
@@ -35,7 +35,7 @@ class ProductComponentServices
     {
         $this->repository = $repository;
         //$this->emit = $container['eventEmitter'];
-        //$this->cache = $container['cache'];
+        $this->cache = $container['cache'];
     }
 
     /**
@@ -89,5 +89,10 @@ class ProductComponentServices
     public function findAllGroupByKey() : Collection
     {
         return $this->findAll()->groupBy('type');
+    }
+
+    public function clearCache()
+    {
+        $this->cache->delete('PC');
     }
 }

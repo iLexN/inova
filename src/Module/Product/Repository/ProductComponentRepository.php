@@ -33,7 +33,7 @@ class ProductComponentRepository
     /**
      * @param integer $id
      *
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
+     * @return Component|null
      */
     public function findOne($id)
     {
