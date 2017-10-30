@@ -6,7 +6,6 @@ use App\Module\Cache\CacheHandlerInterface;
 use App\Module\Product\Entity\Component;
 use App\Module\Product\Repository\ProductComponentRepository;
 use Illuminate\Database\Eloquent\Collection;
-use League\Event\Emitter;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -18,9 +17,6 @@ class ProductComponentServices
 {
     /** @var ProductComponentRepository  */
     private $repository;
-
-    /** @var  Emitter */
-    //private $emit;
 
     /** @var  CacheHandlerInterface */
     private $cache;
@@ -34,7 +30,6 @@ class ProductComponentServices
     public function __construct(ContainerInterface $container, ProductComponentRepository $repository)
     {
         $this->repository = $repository;
-        //$this->emit = $container['eventEmitter'];
         $this->cache = $container['cache'];
     }
 

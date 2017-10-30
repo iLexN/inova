@@ -1,0 +1,104 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+    <H2>Product Info</H2>
+    <div id="product_info">
+        {% if mode == 'new' %}
+            <input type="button" value="Save" v-on:click="create">
+        {% else %}
+            <input type="button" v-on:click="update" value="update">
+        {% endif %}
+
+        <div><p>
+            model_no
+            <input type="text" v-model="product_info.model_no">
+            </p>
+        </div>
+        <div><p>
+            material_code
+            <input type="text" v-model="product_info.material_code">
+            </p>
+        </div>
+        <div><p>
+            product_description<br/>
+            <textarea v-model="product_info.product_description"></textarea>
+            </p>
+        </div>
+        <div>
+            <p>
+            product_voltage<br/>
+            <textarea v-model="product_info.product_voltage"></textarea>
+            </p>
+        </div>
+        <div><p>
+            product_input_current
+            <input type="text" v-model="product_info.product_input_current">
+            </p>
+        </div>
+        <div><p>
+            product_framesize
+            <input type="text" v-model="product_info.product_framesize">
+            </p>
+        </div>
+        <div><p>
+            tp_withvat_rmb
+            <input type="text" v-model="product_info.tp_withvat_rmb">
+            </p>
+        </div>
+        <div><p>
+            tp_novat_rmb
+            <input type="text" v-model="product_info.tp_novat_rmb">
+            </p>
+        </div>
+        <div><p>
+            tp_update_date
+            <input type="text" v-model="product_info.tp_update_date">
+            </p>
+        </div>
+        <div><p>
+            tp_update_by
+            <input type="text" v-model="product_info.tp_update_by">
+            </p>
+        </div>
+        <div><p>
+            list_price_fobsh_usd
+            <input type="text" v-model="product_info.list_price_fobsh_usd">
+            </p>
+        </div>
+        <div><p>
+            remark<br/>
+            <textarea v-model="product_info.remark"></textarea>
+            </p>
+        </div>
+
+
+        {% for type in type_list %}
+            <div>
+                <h3>{{ type }}</h3>
+                <select v-model="{{ type }}_v">
+                    <option v-for="r in {{ type }}_list" :value="r.id" v-text="r.value"></option>
+                </select>
+                <input type="button" value="add" v-on:click="add({{ type }}_v)">
+                <ul>
+                <li v-for="r in pc_{{ type }}_list">
+                    <span v-text="r.value"></span>
+                    <button v-on:click="take(r)">remove</button>
+                </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block js_footer %}
+
+    <script>
+      var product_info = {{ product_info | raw }};
+      var pc_list = {{ pc_list | raw }};
+      var list = {{ list | raw }};
+      var type_list = {{ type_list | json_encode | raw }}
+    </script>
+    <script src="/assets/js/product/edit.js?v={{ appVersion }}"></script>
+
+{% endblock %}
