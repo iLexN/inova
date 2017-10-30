@@ -1,5 +1,5 @@
 /** global: Vue */
-
+/** global: product_list */
 
 var app = new Vue({
   el: '#list',

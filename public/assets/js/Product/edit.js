@@ -3,6 +3,8 @@
 /** global: axios */
 /** global: type_list */
 /** global: list */
+/** global: product_info */
+/** global: pc_list */
 
 
 var app = new Vue({
@@ -59,15 +61,19 @@ var app = new Vue({
   },
   methods :{
     add:function(id){
-      if ( id == '') return;
+      if ( id == ''){
+        return;
+      }
       var a_index = _.findIndex(this.pc_list, {"id":id});
-      if ( a_index !== -1) return;
+      if ( a_index !== -1) {
+        return;
+      }
       var index = _.findIndex(this.list, {"id":id});
       this.pc_list.push(this.list[index]);
     },
     take:function(r){
       var index = _.findIndex(pc_list, r);
-      self.pc_list.splice(index, 1);
+      this.pc_list.splice(index, 1);
     },
     create:function()
     {
@@ -97,12 +103,6 @@ var app = new Vue({
       }).catch(function () {
 
       });
-    },
-    remove:function(r){
-      var data = {
-        '_METHOD' : 'DELETE'
-      };
-
     }
   }
 });

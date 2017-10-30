@@ -24,9 +24,6 @@ class Create extends AbstractController
         $services = $this->container['productComponentServices'];
         $list = $services->findAll();
 
-        /** @var ProductServices $productServices */
-        $productServices = $this->container['productServices'];
-
         $out = $this->twig->fetch('product/edit.twig', [
             'mode' => 'new',
             'product_info' => $this->getNewInfo(),

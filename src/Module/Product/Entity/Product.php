@@ -66,7 +66,7 @@ class Product extends Model
 
     public function calUsdTpNovat()
     {
-        return $cal = $this->calTpNovat() / 6.7772;
+        return $this->calTpNovat() / 6.7772;
     }
 
     public function numberFormat($value)
