@@ -41,7 +41,7 @@ class Pagination
     public function setPage(int $page)
     {
         $this->page = $page;
-        Paginator::currentPageResolver(function() use ($page) {
+        Paginator::currentPageResolver(function () use ($page) {
             return $page;
         });
     }

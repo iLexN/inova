@@ -129,7 +129,7 @@
                     <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_findOne">findOne</a>($id)
+                    <a href="#method_findOne">findOne</a>(int $id)
         
                                             <p>Find User By id</p>                </div>
                 <div class="col-md-2"></div>
@@ -150,7 +150,7 @@
                     <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>|null
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_findOneByField">findOneByField</a>($field, $value)
+                    <a href="#method_findOneByField">findOneByField</a>(string $field, string $value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -161,7 +161,7 @@
                     bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isEmailExist">isEmailExist</a>($email)
+                    <a href="#method_isEmailExist">isEmailExist</a>(string $email)
         
                                             <p>check user email is exist.</p>                </div>
                 <div class="col-md-2"></div>
@@ -230,7 +230,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         line 51</div>
+        <div class="location">at         line 50</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>
     <strong>create</strong>(array $data)
         </code>
@@ -270,7 +270,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location">at         line 65</div>
+        <div class="location">at         line 64</div>
         <code>                    
     <strong>update</strong>(<a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a> $user, array $data)
         </code>
@@ -306,9 +306,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findOne">
-        <div class="location">at         line 79</div>
+        <div class="location">at         line 78</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>|null
-    <strong>findOne</strong>($id)
+    <strong>findOne</strong>(int $id)
         </code>
     </h3>
     <div class="details">
@@ -322,7 +322,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$id</td>
                 <td></td>
             </tr>
@@ -346,7 +346,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findAll">
-        <div class="location">at         line 87</div>
+        <div class="location">at         line 86</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>[]|<abbr title="Illuminate\Database\Eloquent\Collection">Collection</abbr>
     <strong>findAll</strong>()
         </code>
@@ -374,9 +374,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findOneByField">
-        <div class="location">at         line 99</div>
+        <div class="location">at         line 98</div>
         <code>                    <a href="../../../../App/Module/User/Entity/User.html"><abbr title="App\Module\User\Entity\User">User</abbr></a>|null
-    <strong>findOneByField</strong>($field, $value)
+    <strong>findOneByField</strong>(string $field, string $value)
         </code>
     </h3>
     <div class="details">
@@ -388,12 +388,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$field</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$value</td>
                 <td></td>
             </tr>
@@ -417,9 +417,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmailExist">
-        <div class="location">at         line 111</div>
+        <div class="location">at         line 110</div>
         <code>                    bool
-    <strong>isEmailExist</strong>($email)
+    <strong>isEmailExist</strong>(string $email)
         </code>
     </h3>
     <div class="details">
@@ -433,7 +433,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$email</td>
                 <td>string</td>
             </tr>
@@ -457,7 +457,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isUserExist">
-        <div class="location">at         line 127</div>
+        <div class="location">at         line 123</div>
         <code>                    bool
     <strong>isUserExist</strong>(int $id)
         </code>
@@ -497,7 +497,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_clearCache">
-        <div class="location">at         line 141</div>
+        <div class="location">at         line 132</div>
         <code>                    
     <strong>clearCache</strong>()
         </code>

@@ -8,6 +8,11 @@ use App\Module\User\Services\UserServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Create
+ *
+ * @package App\Controller\Web\User
+ */
 class Create extends AbstractController
 {
     /**
@@ -30,6 +35,11 @@ class Create extends AbstractController
         return new TextResponse($out);
     }
 
+    /**
+     * default field init
+     *
+     * @return string
+     */
     private function getNew()
     {
         return \json_encode([

@@ -9,6 +9,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Update
+ *
+ * @package App\Controller\Api\Customer
+ */
 class Update extends AbstractController
 {
     /**

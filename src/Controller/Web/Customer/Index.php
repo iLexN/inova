@@ -8,6 +8,11 @@ use App\Module\Customer\Services\CustomerServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Index
+ *
+ * @package App\Controller\Web\Customer
+ */
 class Index extends AbstractController
 {
     /**

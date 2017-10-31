@@ -1,0 +1,54 @@
+{% extends "theme/base.twig" %}
+
+{% block content %}
+    <H2>Product List</H2>
+    <div id="list">
+
+        search
+        <input type="text" v-model="search_text">
+
+        <table border="1">
+            <tr>
+                <td>model_no</td>
+                <td>material_code</td>
+                <td>product_description</td>
+                <td>product_voltage</td>
+                <td>product_input_current</td>
+                <td>product_framesize</td>
+                <td>tp_withvat_rmb</td>
+                <td>tp_novat_rmb</td>
+                <td>usd_tp_novat</td>
+                <td>price</td>
+                <td>tp_update_date</td>
+                <td>tp_update_by</td>
+                <td>list_price_fobsh_usd</td>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr v-for="(p, index) in product_list_sort">
+                <td v-text="p.model_no"></td>
+                <td v-text="p.material_code"></td>
+                <td v-text="p.product_description"></td>
+                <td v-text="p.product_voltage"></td>
+                <td v-text="p.product_input_current"></td>
+                <td v-text="p.product_framesize"></td>
+                <td v-text="p.tp_withvat_rmb"></td>
+                <td v-text="p.tp_novat_rmb"></td>
+                <td v-text="p.usd_tp_novat"></td>
+                <td v-text="p.price"></td>
+                <td v-text="p.tp_update_date"></td>
+                <td v-text="p.tp_update_by"></td>
+                <td v-text="p.list_price_fobsh_usd"></td>
+                <td><a :href="'/product/'+p.id">Edit</a></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+
+{% block js_footer %}
+    <script>
+        var product_list = {{ product_list | raw}};
+    </script>
+    <script src="/assets/js/product/index.js?v={{ appVersion }}"></script>
+{% endblock %}
