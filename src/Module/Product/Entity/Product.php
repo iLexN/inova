@@ -55,6 +55,7 @@ class Product extends Model
      */
     public function getTpNovatRmbAttribute()
     {
+        //return $this->calTpNovat();
         return $this->numberFormat($this->calTpNovat());
     }
 
@@ -89,9 +90,9 @@ class Product extends Model
     private function calTpNovat()
     {
         if ($this->attributes['tp_withvat_rmb'] == '0.0000') {
-            return $this->attributes['tp_novat_rmb'];
+            return (float)$this->attributes['tp_novat_rmb'];
         } else {
-            return $this->attributes['tp_withvat_rmb'] / 1.17;
+            return (float)$this->attributes['tp_withvat_rmb'] / 1.17;
         }
     }
 
@@ -116,6 +117,6 @@ class Product extends Model
      */
     private function numberFormat($value)
     {
-        return (float) \number_format($value, 2);
+        return round($value, 2);
     }
 }

@@ -26,6 +26,16 @@ class Create extends AbstractController
 
         /** @var ProductServices $services */
         $services = $this->container['productServices'];
+
+        $model = $input['product_info']['model_no'];
+        if (empty($model)) {
+            return new JsonResponse(['error'=>'enter model_no']);
+        }
+
+        if (!empty($model) && $services->isModelExist($model)) {
+            return new JsonResponse(['error'=>'this model no is exist']);
+        }
+
         $one = $services->createProduct($input);
 
         return new JsonResponse($one);

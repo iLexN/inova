@@ -7,7 +7,6 @@
         <input type="text" v-model="new_info.value">
 
         <select v-model="new_info.type">
-            <option value="">------</option>
             {% for type in type_list %}
                 <option value="{{ type }}" >{{ type }}</option>
             {% endfor %}

@@ -43,7 +43,6 @@ var app = new Vue({
       axios.post('/api/product/component', this.new_info).then(function (r) {
         self.list.push(r.data);
         self.new_info.value ='';
-        self.new_info.type = '';
       }).catch(function () {
 
       });

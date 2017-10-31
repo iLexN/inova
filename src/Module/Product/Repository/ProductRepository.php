@@ -40,4 +40,15 @@ class ProductRepository
     {
         return Product::get();
     }
+
+    /**
+     * @param string $field
+     * @param string $value
+     *
+     * @return Product|null
+     */
+    public function findOneByField(string $field, string $value)
+    {
+        return Product::where($field, '=', $value)->first();
+    }
 }

@@ -44,6 +44,29 @@ class ProductServices
     }
 
     /**
+     * @param string $field
+     * @param string $value
+     *
+     * @return Product|null
+     */
+    public function findOneByField(string $field, string $value)
+    {
+        return $this->repository->findOneByField($field, $value);
+    }
+
+    /**
+     * check Model is exist.
+     *
+     * @param $value string
+     *
+     * @return bool
+     */
+    public function isModelExist(string $value = '') : bool
+    {
+        return (bool) $this->findOneByField('model_no', $value);
+    }
+
+    /**
      * @return Collection
      */
     public function findAll() : Collection
@@ -78,15 +101,22 @@ class ProductServices
      */
     public function updateProduct(Product $product, array $data)
     {
-        $this->update($product, $data['product_info']);
+        $this->update($product, $this->clearField($data['product_info']));
         $this->syncComponent($product, $data);
+    }
+
+    private function clearField(array $data)
+    {
+        unset($data['usd_tp_novat']);
+        unset($data['price']);
+        return $data;
     }
 
     /**
      * @param Product $product
      * @param array $data
      */
-    public function syncComponent(Product $product, array $data)
+    private function syncComponent(Product $product, array $data)
     {
         $type = $data['pc_list'] ?? false;
         if ($type) {
