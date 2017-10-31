@@ -11,6 +11,11 @@ use App\Module\Product\Services\ProductServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Create
+ *
+ * @package App\Controller\Web\Product
+ */
 class Create extends AbstractController
 {
     /**
@@ -35,6 +40,9 @@ class Create extends AbstractController
         return new TextResponse($out);
     }
 
+    /**
+     * @return string
+     */
     public function getNewInfo()
     {
         return \json_encode([

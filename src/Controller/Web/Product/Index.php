@@ -11,6 +11,11 @@ use App\Module\Product\Services\ProductServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Index
+ *
+ * @package App\Controller\Web\Product
+ */
 class Index extends AbstractController
 {
     /**

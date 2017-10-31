@@ -4,6 +4,11 @@ namespace App\Module\Product\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Product
+ *
+ * @package App\Module\Product\Entity
+ */
 class Product extends Model
 {
     /**
@@ -21,6 +26,9 @@ class Product extends Model
      */
     protected $table = 'product';
 
+    /**
+     * @var array
+     */
     protected $casts = [
         'product_input_current' => 'float',
         'tp_withvat_rmb' => 'float',
@@ -40,21 +48,44 @@ class Product extends Model
         return $this->belongsToMany(Component::class, 'product_n_component', 'product_id', 'component_id');
     }
 
+    /**
+     * Field for rmb tp novat
+     *
+     * @return float
+     */
     public function getTpNovatRmbAttribute($value)
     {
         return $this->numberFormat($this->calTpNovat());
     }
 
+    /**
+     * Field for usd tp novat
+     *
+     * @return float
+     */
     public function getUsdTpNovatAttribute()
     {
         return  $this->numberFormat($this->calUsdTpNovat());
     }
+
+    /**
+     * Field for price
+     * todo: 2.5
+     *
+     * @return float
+     */
     public function getPriceAttribute()
     {
         $cal = $this->calUsdTpNovat() * (1 + (2.5 / 100)) ;
         return $this->numberFormat($cal);
     }
 
+    /**
+     * Cal tp novat when tp withvat rmb is 0.0000
+     * todo: 1.17
+     *
+     * @return float
+     */
     private function calTpNovat()
     {
         if ($this->attributes['tp_withvat_rmb'] == '0.0000') {
@@ -64,13 +95,27 @@ class Product extends Model
         }
     }
 
-    public function calUsdTpNovat()
+    /**
+     * Cal USD from tp novat
+     * todo: 6.7772
+     *
+     * @return float
+     */
+    private function calUsdTpNovat()
     {
         return $this->calTpNovat() / 6.7772;
     }
 
-    public function numberFormat($value)
+
+    /**
+     * format number for output
+     *
+     * @param float $value
+     *
+     * @return float
+     */
+    private function numberFormat($value)
     {
-        return \number_format($value, 2);
+        return (float) \number_format($value, 2);
     }
 }
