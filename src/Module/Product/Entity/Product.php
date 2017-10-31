@@ -53,7 +53,7 @@ class Product extends Model
      *
      * @return float
      */
-    public function getTpNovatRmbAttribute($value)
+    public function getTpNovatRmbAttribute()
     {
         return $this->numberFormat($this->calTpNovat());
     }
