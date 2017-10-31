@@ -8,6 +8,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
 use App\Helper\ResponseResult\ResponseResultInterface;
 
+/**
+ * Class Create
+ *
+ * @package App\Controller\Api\Product
+ */
 class Create extends AbstractController
 {
     /**
@@ -21,7 +26,7 @@ class Create extends AbstractController
 
         /** @var ProductServices $services */
         $services = $this->container['productServices'];
-        $one = $services->createPrudoct($input);
+        $one = $services->createProduct($input);
 
         return new JsonResponse($one);
     }
