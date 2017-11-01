@@ -44,7 +44,7 @@ class ComponentShow extends AbstractController
     private function getNew()
     {
         return \json_encode([
-            'type' => '',
+            'type' => Component::TYPE_LIST[0],
             'value' => '',
         ]);
     }
