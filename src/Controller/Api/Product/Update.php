@@ -26,8 +26,18 @@ class Update extends AbstractController
 
         /** @var ProductServices $services */
         $services = $this->container['productServices'];
-
         $one = $services->findOne($args['id']);
+
+        $model = $input['product_info']['model_no'];
+        if (empty($model)) {
+            return new JsonResponse(['error'=>'enter model_no']);
+        }
+
+        if (!empty($model) && $one->model_no !== $model &&  $services->isModelExist($model)) {
+            return new JsonResponse(['error'=>'this model no is exist']);
+        }
+
+
         $services->updateProduct($one, $input);
 
         return new JsonResponse($one);

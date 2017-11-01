@@ -102,8 +102,10 @@ var app = new Vue({
         })
       };
       console.log(data);
-      axios.post('/api/product/'+this.product_info.id, data).then(function (r) {
-        console.log(r);
+      axios.post('/api/product/'+this.product_info.id, data).then(function (response) {
+        if ( response.data.error !== undefined ){
+          alert(response.data.error);
+        }
       }).catch(function () {
 
       });
