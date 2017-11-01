@@ -55,7 +55,6 @@ class Product extends Model
      */
     public function getTpNovatRmbAttribute()
     {
-        //return $this->calTpNovat();
         return $this->numberFormat($this->calTpNovat());
     }
 
