@@ -121,7 +121,6 @@ var app = new Vue({
         } else {
           window.location.href = '/customer/'+response.data.id;
         }
-        console.log(response);
       }).catch(function () {
 
       });

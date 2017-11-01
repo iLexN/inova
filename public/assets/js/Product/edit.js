@@ -83,9 +83,13 @@ var app = new Vue({
           return r.id
         })
       };
-      console.log(data);
-      axios.post('/api/product', data).then(function (r) {
-        console.log(r);
+      axios.post('/api/product', data).then(function (response) {
+        console.log(response);
+        if ( response.data.error !== undefined ){
+          alert(response.data.error);
+        } else {
+          window.location.href = '/product/'+response.data.id;
+        }
       }).catch(function () {
 
       });
@@ -98,8 +102,10 @@ var app = new Vue({
         })
       };
       console.log(data);
-      axios.post('/api/product/'+this.product_info.id, data).then(function (r) {
-        console.log(r);
+      axios.post('/api/product/'+this.product_info.id, data).then(function (response) {
+        if ( response.data.error !== undefined ){
+          alert(response.data.error);
+        }
       }).catch(function () {
 
       });
