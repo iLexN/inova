@@ -82,7 +82,7 @@
                 <ul>
                 <li v-for="r in pc_{{ type }}_list">
                     <span v-text="r.value"></span>
-                    <button v-on:click="take(r)">remove</button>
+                    <input type="button" value="remove" v-on:click="take(r)">
                 </li>
                 </ul>
             </div>

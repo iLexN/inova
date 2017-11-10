@@ -36,7 +36,7 @@
                     <input type="button" value="add Country" v-on:click="addCountry(r,r_index)">
                 </li>
                 <li v-for="c in r.countries">
-                    <input text="text" v-model="c.name">
+                    <input type="text" v-model="c.name">
                     <input type="button" value="update" v-on:click="updateCountry(c)">
                 </li>
             </ul>
