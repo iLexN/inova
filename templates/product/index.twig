@@ -8,23 +8,25 @@
         <input type="text" v-model="search_text">
 
         <table border="1">
+            <thead>
             <tr>
-                <td>model_no</td>
-                <td>material_code</td>
-                <td>product_description</td>
-                <td>product_voltage</td>
-                <td>product_input_current</td>
-                <td>product_framesize</td>
-                <td>tp_withvat_rmb</td>
-                <td>tp_novat_rmb</td>
-                <td>usd_tp_novat</td>
-                <td>price</td>
-                <td>tp_update_date</td>
-                <td>tp_update_by</td>
-                <td>list_price_fobsh_usd</td>
-                <td>&nbsp;</td>
+                <th>model_no</th>
+                <th>material_code</th>
+                <th>product_description</th>
+                <th>product_voltage</th>
+                <th>product_input_current</th>
+                <th>product_framesize</th>
+                <th>tp_withvat_rmb</th>
+                <th>tp_novat_rmb</th>
+                <th>usd_tp_novat</th>
+                <th>price</th>
+                <th>tp_update_date</th>
+                <th>tp_update_by</th>
+                <th>list_price_fobsh_usd</th>
+                <th>&nbsp;</th>
             </tr>
-
+            </thead>
+            <tbody>
             <tr v-for="(p, index) in product_list_sort">
                 <td v-text="p.model_no"></td>
                 <td v-text="p.material_code"></td>
@@ -41,6 +43,7 @@
                 <td v-text="p.list_price_fobsh_usd"></td>
                 <td><a :href="'/product/'+p.id">Edit</a></td>
             </tr>
+            </tbody>
         </table>
     </div>
 {% endblock %}
