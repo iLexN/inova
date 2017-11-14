@@ -29,7 +29,7 @@ class ProductRepository
      *
      * @return Product|null
      */
-    public function findOne(int $id) :?Product
+    public function findOne(int $id) : ?Product
     {
         return Product::find($id);
     }
@@ -48,7 +48,7 @@ class ProductRepository
      *
      * @return Product|null
      */
-    public function findOneByField(string $field, string $value):?Product
+    public function findOneByField(string $field, string $value): ?Product
     {
         return Product::where($field, '=', $value)->first();
     }
