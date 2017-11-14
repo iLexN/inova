@@ -28,7 +28,7 @@ class ProductRepository
      *
      * @return Product|null
      */
-    public function findOne(int $id)
+    public function findOne(int $id) :?Product
     {
         return Product::find($id);
     }
@@ -36,7 +36,7 @@ class ProductRepository
     /**
      * @return Collection|Product[]
      */
-    public function findAll()
+    public function findAll() : Collection
     {
         return Product::get();
     }
@@ -47,8 +47,20 @@ class ProductRepository
      *
      * @return Product|null
      */
-    public function findOneByField(string $field, string $value)
+    public function findOneByField(string $field, string $value):?Product
     {
         return Product::where($field, '=', $value)->first();
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function findCustomerNotHaveProduct(int $id) : Collection
+    {
+        $products = Product::whereDoesntHave('customers', function ($query) use ($id) {
+            $query->where('customer_id', $id);
+        })->get();
+
+        return $products;
     }
 }

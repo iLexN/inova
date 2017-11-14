@@ -15,7 +15,7 @@ var app = new Vue({
       var new_list = this.product_list;
       var search = this.search_text;
 
-      return new_list.filter(function(c){
+      return this.product_list.filter(function(c){
         if ( search == ''){
           return true;
         }
@@ -26,6 +26,27 @@ var app = new Vue({
     }
   },
   methods :{
+    addToCustomer: function(product){
+      var self = this;
+      axios.post('/api/customer/'+customer_info.id+'/attach-product', product).then(function () {
+        var index = _.findIndex(self.product_list, product);
+        self.product_list.splice(index, 1);
+      }).catch(function () {
 
+      });
+    },
+    save: function(product,index){
+      var self = this;
+      var data = {
+        'selling_price' : product.pivot.selling_price
+      };
+
+      axios.post('/api/customer/'+customer_info.id+'/product/'+product.id, data).then(function (response) {
+        self.product_list_sort[index].pivot.cal = response.data.pivot.cal;
+      }).catch(function () {
+
+      });
+
+    }
   }
 });

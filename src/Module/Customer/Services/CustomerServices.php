@@ -205,6 +205,34 @@ class CustomerServices
     }
 
     /**
+     * @param Customers $customer
+     * @param $data
+     */
+    public function attachProduct(Customers $customer, $data)
+    {
+        $customer->products()->attach($data['id']);
+    }
+
+    /**
+     * @param Customers $customer
+     * @param $pid
+     * @param $data
+     */
+    public function updateProducts(Customers $customer, $pid, $data)
+    {
+        $customer->products()->updateExistingPivot($pid, $data);
+    }
+
+    /**
+     * @param Customers $customer
+     */
+    public function withProducts(Customers $customer)
+    {
+        $customer->load('products');
+    }
+
+
+    /**
      * Clear Cache
      */
     public function clearCache()

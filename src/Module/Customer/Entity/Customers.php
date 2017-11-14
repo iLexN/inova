@@ -2,6 +2,7 @@
 
 namespace App\Module\Customer\Entity;
 
+use App\Module\Product\Entity\Product;
 use App\Module\User\Entity\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -54,5 +55,12 @@ class Customers extends Model
     public function staff()
     {
         return $this->belongsToMany(User::class, 'customer_user', 'customers_id', 'user_id');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'customer_product', 'customer_id', 'product_id')
+            ->withPivot('selling_price')
+            ->using(CustomerProduct::class);
     }
 }

@@ -7,13 +7,24 @@
     <input type="text" v-model="search_text">
 
     <table border="1">
+        <thead>
+            <tr>
+                <th></th>
+                <th>name</th>
+                <th>email</th>
+                <th>department</th>
+                <th>title</th>
+            </tr>
+        </thead>
+        <tbody>
         <tr v-for="(u, index) in list_sort">
+            <td><a :href="'/user/'+u.id">Edit</a></td>
             <td v-text="u.name"></td>
             <td v-text="u.email"></td>
             <td v-text="u.department"></td>
             <td v-text="u.title"></td>
-            <td><a :href="'/user/'+u.id">Edit</a></td>
         </tr>
+        </tbody>
     </table>
 </div>
 
