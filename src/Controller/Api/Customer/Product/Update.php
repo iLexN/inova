@@ -4,6 +4,7 @@ namespace App\Controller\Api\Customer\Product;
 
 use App\Controller\AbstractController;
 use App\Module\Customer\Services\CustomerServices;
+use App\Module\Product\Entity\Product;
 use App\Module\User\Services\UserServices;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Helper\ResponseResult\JsonResponse;
@@ -32,7 +33,7 @@ class Update extends AbstractController
         $customerService->updateProducts($customer, $pid, $input);
 
         $customerService->withProducts($customer);
-        $key = $customer->products->search(function ($item) use ($pid) {
+        $key = $customer->products->search(function (Product $item) use ($pid) {
             return $item->id === (int)$pid;
         });
 

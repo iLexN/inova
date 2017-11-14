@@ -1,5 +1,7 @@
 /** global: Vue */
 /** global: product_list */
+/** global: axios */
+/** global: customer_info */
 
 var app = new Vue({
   el: '#list',
@@ -12,7 +14,6 @@ var app = new Vue({
   },
   computed : {
     product_list_sort : function (){
-      var new_list = this.product_list;
       var search = this.search_text;
 
       return this.product_list.filter(function(c){

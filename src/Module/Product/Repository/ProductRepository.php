@@ -4,6 +4,7 @@ namespace App\Module\Product\Repository;
 
 use App\Module\Product\Entity\Product;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class ProductRepository
@@ -57,7 +58,7 @@ class ProductRepository
      */
     public function findCustomerNotHaveProduct(int $id) : Collection
     {
-        $products = Product::whereDoesntHave('customers', function ($query) use ($id) {
+        $products = Product::whereDoesntHave('customers', function (Builder $query) use ($id) {
             $query->where('customer_id', $id);
         })->get();
 
