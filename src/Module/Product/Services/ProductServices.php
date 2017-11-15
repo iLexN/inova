@@ -38,7 +38,7 @@ class ProductServices
      *
      * @return Product|null
      */
-    public function findOne(int $id)
+    public function findOne(int $id): ?Product
     {
         return $this->repository->findOne($id);
     }
@@ -49,9 +49,27 @@ class ProductServices
      *
      * @return Product|null
      */
-    public function findOneByField(string $field, string $value)
+    public function findOneByField(string $field, string $value) : ?Product
     {
         return $this->repository->findOneByField($field, $value);
+    }
+
+    /**
+     * @return Product[]|Collection
+     */
+    public function findAll() : Collection
+    {
+        return $this->repository->findAll();
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Product[]|Collection
+     */
+    public function findCustomerNotHaveProduct(int $id) : Collection
+    {
+        return $this->repository->findCustomerNotHaveProduct($id);
     }
 
     /**
@@ -64,14 +82,6 @@ class ProductServices
     public function isModelExist(string $value = '') : bool
     {
         return (bool) $this->findOneByField('model_no', $value);
-    }
-
-    /**
-     * @return Collection
-     */
-    public function findAll() : Collection
-    {
-        return $this->repository->findAll();
     }
 
     /**
@@ -88,7 +98,7 @@ class ProductServices
      *
      * @return Product
      */
-    public function createProduct(array $data)
+    public function createProduct(array $data) : Product
     {
         $product = $this->repository->create($data['product_info']);
         $this->syncComponent($product, $data);
@@ -105,7 +115,12 @@ class ProductServices
         $this->syncComponent($product, $data);
     }
 
-    private function clearField(array $data)
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
+    private function clearField(array $data) : array
     {
         unset($data['usd_tp_novat']);
         unset($data['price']);

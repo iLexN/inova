@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <link rel="stylesheet" href="/assets/css/tacit-css.min.css">
+    <style>
+        table{ overflow: unset;}
+    </style>
 </head>
 <body>
 
@@ -14,13 +17,13 @@
     </div>
     <div>
         <b>User</b>
-        <a href="{{ path_for('user.index') }}">List</a>
+        <a href="{{ path_for('user.index') }}">List</a> |
         <a href="{{ path_for('user.new') }}">New</a>
     </div>
     <div>
         <b>Product</b>
-        <a href="{{ path_for('product.index') }}">List</a>
-        <a href="{{ path_for('product.new') }}">New</a>
+        <a href="{{ path_for('product.index') }}">List</a> |
+        <a href="{{ path_for('product.new') }}">New</a> |
         <a href="{{ path_for('product.category') }}">Category</a>
     </div>
 </header>

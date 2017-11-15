@@ -76,13 +76,13 @@
             <div>
                 <h3>{{ type }}</h3>
                 <select v-model="{{ type }}_v">
-                    <option v-for="r in {{ type }}_list" :value="r.id" v-text="r.value"></option>
+                    <option v-for="r in {{ type }}_list" :value="r.id" v-text="r.value" :key="r.id"></option>
                 </select>
                 <input type="button" value="add" v-on:click="add({{ type }}_v)">
                 <ul>
-                <li v-for="r in pc_{{ type }}_list">
+                <li v-for="r in pc_{{ type }}_list" :key="r.id">
                     <span v-text="r.value"></span>
-                    <button v-on:click="take(r)">remove</button>
+                    <input type="button" value="remove" v-on:click="take(r)">
                 </li>
                 </ul>
             </div>

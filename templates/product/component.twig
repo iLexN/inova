@@ -16,7 +16,7 @@
         {% for type in type_list %}
             <div>
                 <h3>{{ type }}</h3>
-                <div v-for="r in {{ type }}_list">
+                <div v-for="r in {{ type }}_list" :key="r.id">
                     <input type="text" v-model="r.value">
                     <input type="button" v-on:click="edit(r)" value="edit">
                     <input type="button" v-on:click="remove(r)" value="remove">

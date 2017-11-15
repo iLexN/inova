@@ -1,7 +1,11 @@
 {% extends "theme/base.twig" %}
 
 {% block content %}
-    <H2>Product List</H2>
+<h2>Customer add Product</h2>
+    [<a href="{{ path_for('customer.product', {id: customer_info.id} ) }}">Show Products</a>]
+<fieldset>
+    {{ customer_info }}
+</fieldset>
     <div id="list">
 
         search
@@ -10,6 +14,7 @@
         <table border="1">
             <thead>
             <tr>
+                <th>&nbsp;</th>
                 <th>model_no</th>
                 <th>material_code</th>
                 <th>product_description</th>
@@ -23,11 +28,11 @@
                 <th>tp_update_date</th>
                 <th>tp_update_by</th>
                 <th>list_price_fobsh_usd</th>
-                <th>&nbsp;</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(p, index) in product_list_sort" :key="p.id">
+            <tr v-for="(p, index) in product_list_sort">
+                <td><input type="button" value="add" v-on:click="addToCustomer(p)"></td>
                 <td v-text="p.model_no"></td>
                 <td v-text="p.material_code"></td>
                 <td v-text="p.product_description"></td>
@@ -41,7 +46,6 @@
                 <td v-text="p.tp_update_date"></td>
                 <td v-text="p.tp_update_by"></td>
                 <td v-text="p.list_price_fobsh_usd"></td>
-                <td><a :href="'/product/'+p.id">Edit</a></td>
             </tr>
             </tbody>
         </table>
@@ -51,7 +55,8 @@
 
 {% block js_footer %}
     <script>
-        var product_list = {{ product_list | raw}};
+      var customer_info = {{ customer_info | raw }};
+      var product_list = {{ product_list | raw }}
     </script>
     <script src="/assets/js/product/index.js?v={{ appVersion }}"></script>
 {% endblock %}

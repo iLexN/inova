@@ -15,6 +15,8 @@ $app->group('/api', function() {
     $this->delete('/customer/extra/{id:\d+}', 'App\Controller\Api\Customer\Extra\Delete');
     $this->post('/customer', 'App\Controller\Api\Customer\Create');
     $this->post('/customer/{id:\d+}', 'App\Controller\Api\Customer\Update');
+    $this->post('/customer/{id:\d+}/attach-product', 'App\Controller\Api\Customer\Product\AttachProduct');
+    $this->post('/customer/{id:\d+}/product/{pid:\d+}', 'App\Controller\Api\Customer\Product\Update');
 
     $this->post('/product','App\Controller\Api\Product\Create');
     $this->post('/product/{id:\d+}','App\Controller\Api\Product\Update');
@@ -28,6 +30,8 @@ $app->get('/customer/new', 'App\Controller\Web\Customer\Create')->setName('custo
 $app->get('/customer/{id:\d+}', 'App\Controller\Web\Customer\Show');
 $app->get('/customer/{id:\d+}/edit', 'App\Controller\Web\Customer\Edit');
 $app->get('/customer/type', 'App\Controller\Web\Customer\Type\Index')->setName('customer.component');
+$app->get('/customer/{id:\d+}/products/attach', 'App\Controller\Web\customer\Product\Attach')->setName('customer.product.attach');
+$app->get('/customer/{id:\d+}/products', 'App\Controller\Web\customer\Product\Index')->setName('customer.product');
 
 $app->get('/user', 'App\Controller\Web\User\Index')->setName('user.index');
 $app->get('/user/new', 'App\Controller\Web\User\Create')->setName('user.new');
