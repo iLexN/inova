@@ -7,7 +7,22 @@
     <input type="text" v-model="search_text">
 
     <table border="1">
-        <tr v-for="(c, index) in customer_list_sort">
+        <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>name</th>
+            <th>code</th>
+            <th>region</th>
+            <th>country</th>
+            <th>type</th>
+            <th>staff</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(c, index) in customer_list_sort" :key="c.id">
+            <td><a :href="'/customer/'+c.id+'/products'">products</a></td>
+            <td><a :href="'/customer/'+c.id">Edit</a></td>
             <td v-text="c.name"></td>
             <td v-text="c.code"></td>
             <td v-text="c.region.name"></td>
@@ -24,9 +39,8 @@
                     </tr>
                 </table>
             </td>
-
-            <td><a :href="'/customer/'+c.id">Edit</a></td>
         </tr>
+        </tbody>
     </table>
 </div>
 

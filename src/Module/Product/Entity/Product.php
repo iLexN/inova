@@ -2,6 +2,9 @@
 
 namespace App\Module\Product\Entity;
 
+use App\Module\Customer\Entity\Customers;
+use App\Module\User\Entity\User;
+use App\Module\User\Entity\UserProduct;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -48,12 +51,18 @@ class Product extends Model
         return $this->belongsToMany(Component::class, 'product_n_component', 'product_id', 'component_id');
     }
 
+    public function customers()
+    {
+        return $this->belongsToMany(Customers::class, 'customer_product', 'product_id', 'customer_id')
+            ->using(UserProduct::class);
+    }
+
     /**
      * Field for rmb tp novat
      *
      * @return float
      */
-    public function getTpNovatRmbAttribute()
+    public function getTpNovatRmbAttribute() : float
     {
         return $this->numberFormat($this->calTpNovat());
     }
@@ -63,7 +72,7 @@ class Product extends Model
      *
      * @return float
      */
-    public function getUsdTpNovatAttribute()
+    public function getUsdTpNovatAttribute() : float
     {
         return  $this->numberFormat($this->calUsdTpNovat());
     }
@@ -74,7 +83,7 @@ class Product extends Model
      *
      * @return float
      */
-    public function getPriceAttribute()
+    public function getPriceAttribute() : float
     {
         $cal = $this->calUsdTpNovat() * (1 + (2.5 / 100)) ;
         return $this->numberFormat($cal);
@@ -86,7 +95,7 @@ class Product extends Model
      *
      * @return float
      */
-    private function calTpNovat()
+    private function calTpNovat() : float
     {
         if ($this->attributes['tp_withvat_rmb'] == '0.0000') {
             return (float)$this->attributes['tp_novat_rmb'];
@@ -101,7 +110,7 @@ class Product extends Model
      *
      * @return float
      */
-    private function calUsdTpNovat()
+    private function calUsdTpNovat() : float
     {
         return $this->calTpNovat() / 6.7772;
     }
@@ -114,7 +123,7 @@ class Product extends Model
      *
      * @return float
      */
-    private function numberFormat($value)
+    private function numberFormat($value) : float
     {
         return round($value, 2);
     }

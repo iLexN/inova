@@ -13,7 +13,7 @@
     <div>
         Customer Type:
         <ul>
-            <li v-for="(t, index) in type_list">
+            <li v-for="(t, index) in type_list" :key="t.id">
                 <input type="text" v-model="t.name">
                 <input type="button" value="update" v-on:click="update(t)">
             </li>
@@ -27,7 +27,7 @@
             <input type="text" v-model="region.name">
             <input type="button" value="add Region" v-on:click="addRegion">
         </li>
-        <li v-for="(r,r_index) in regions_list">
+        <li v-for="(r,r_index) in regions_list" :key="r.id">
             <input type="text" v-model="r.name">
             <input type="button" value="update" v-on:click="updateRegion(r)">
             <ul>
@@ -35,7 +35,7 @@
                     <input type="text" v-model="r.new_country">
                     <input type="button" value="add Country" v-on:click="addCountry(r,r_index)">
                 </li>
-                <li v-for="c in r.countries">
+                <li v-for="c in r.countries" :key="c.id">
                     <input type="text" v-model="c.name">
                     <input type="button" value="update" v-on:click="updateCountry(c)">
                 </li>
