@@ -29,5 +29,4 @@ class CustomerProduct extends Pivot
     {
         return round($value, 2);
     }
-
 }
