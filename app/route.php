@@ -2,7 +2,7 @@
 
 $app->get('/', 'App\Controller\Info');
 
-$app->group('/api', function() {
+$app->group('/api', function () {
     $this->post('/user', 'App\Controller\Api\User\Create');
     $this->post('/user/{id:\d+}', 'App\Controller\Api\User\Update');
 
@@ -18,8 +18,8 @@ $app->group('/api', function() {
     $this->post('/customer/{id:\d+}/attach-product', 'App\Controller\Api\Customer\Product\AttachProduct');
     $this->post('/customer/{id:\d+}/product/{pid:\d+}', 'App\Controller\Api\Customer\Product\Update');
 
-    $this->post('/product','App\Controller\Api\Product\Create');
-    $this->post('/product/{id:\d+}','App\Controller\Api\Product\Update');
+    $this->post('/product', 'App\Controller\Api\Product\Create');
+    $this->post('/product/{id:\d+}', 'App\Controller\Api\Product\Update');
     $this->post('/product/component', 'App\Controller\Api\Product\Component\Create');
     $this->post('/product/component/{id:\d+}', 'App\Controller\Api\Product\Component\Update');
     $this->delete('/product/component/{id:\d+}', 'App\Controller\Api\Product\Component\Delete');
@@ -37,8 +37,7 @@ $app->get('/user', 'App\Controller\Web\User\Index')->setName('user.index');
 $app->get('/user/new', 'App\Controller\Web\User\Create')->setName('user.new');
 $app->get('/user/{id:\d+}', 'App\Controller\Web\User\Show');
 
-
 $app->get('/product', 'App\Controller\Web\Product\Index')->setName('product.index');
 $app->get('/product/category', 'App\Controller\Web\Product\ComponentShow')->setName('product.category');
-$app->get('/product/{id:\d+}','App\Controller\Web\Product\Show')->setName('product.edit');
-$app->get('/product/new','App\Controller\Web\Product\Create')->setName('product.new');
+$app->get('/product/{id:\d+}', 'App\Controller\Web\Product\Show')->setName('product.edit');
+$app->get('/product/new', 'App\Controller\Web\Product\Create')->setName('product.new');
